@@ -1,0 +1,35 @@
+\documentclass{scrbook}
+\KOMAoptions{
+	fontsize=11pt,
+	paper=letter,
+	paper=portrait,
+	parskip=half,
+	headings=big,
+	chapterprefix=false,
+	toc=listof,
+	twoside=false,
+	}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\input{preamble.tex}
+
+\title{Analysis I\\Lecture Notes}
+\author{Guilherme Zeus Dantas e Moura\\\href{mailto:gdantasemo@haverford.edu}{\texttt{gdantasemo@haverford.edu}}}
+\date{Haverford College --- Fall 2021\\Last updated: \today}
+
+\begin{document}
+	\maketitle
+
+		This is Haverford College's undergraduate MATH H317, instructed by Robert Manning.
+		All errors are my responsability.
+
+		Use these notes only as a guide. There is a non-trivial chance that some things here are wrong or incomplete (especially proofs).
+	
+
+		\tableofcontents
+		\newpage
+
+	% start lectures
+	\input{lecture_notes/lec_01.tex}
+	% end lectures
+\end{document}
