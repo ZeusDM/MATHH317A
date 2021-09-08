@@ -1,0 +1,40 @@
+\lecture{4}{2021-09-08}{}
+
+\section{Archimedean Properties}
+
+\begin{thm}{Archimedean Properties}{archimedeanproperties}
+	\begin{enumerate}
+		\item Given any \(x \in \mathbb{R}\), there exists some \(n \in \mathbb{Z}_{>0}\) with \(n > x\).
+		\item Given any \(y > \mathbb{R}_{>0}\), there exists some \(n \in \mathbb{Z}_{>0}\) with \(\frac{1}{n} < y\).
+	\end{enumerate}
+\end{thm}
+
+\begin{dem}{}{}
+	The first statement is equivalent to \(\mathbb{Z}_{>0}\) is not bounded above.
+
+	Suppose \(\mathbb{Z}_{>0}\) is bounded above. Then, there exists \(s = \sup(\mathbb{Z}_{>0})\). Therefore, \(s - 1\) is not an upper bound of \(\mathbb{Z}_{>0}\), i.e., there exists \(n \in \mathbb{Z}_{>0}\) such that \(s - 1 < n\). However, this implies \(s < n + 1\in \mathbb{Z}_{>0}\), implies \(s\) is not an upper bound of \(\mathbb{Z}_{>0}\), which is a contradiction.
+
+	The second statement follows from the first one by setting \(x = \frac{1}{n}\).
+\end{dem}
+
+\begin{thm}{Density of \(\mathbb{Q}\) in \(\mathbb{R}\)}{QisdenseinR}
+	For all \(a, b \in \mathbb{R}\) with \(a < b\), there exists \(q \in \mathbb{Q}\) with \(a < q < b\).
+\end{thm}
+
+\begin{dem}{}{}
+	By \nameref{thm:archimedeanproperties} with \(y = b - a > 0\), there exists  \(n \in \mathbb{Z}_{>0}\) with \(\frac{1}{n} < b - a\).
+
+	Let  \(m\) be the smallest natural number greater than \(na\). Then,
+	\begin{gather*}
+		m-1 \leq na < m \\
+		\frac{m}{n} - \frac{1}{n} \leq a < \frac{m}{n}.
+	\end{gather*}
+
+	The first inequality implies that \(\frac{m}{n} \leq a + \frac{1}{n} < b\), so finally, we conclude that  \[
+		a < \frac{m}{n} < b.
+	\]
+\end{dem}
+
+\begin{cor}{}{}
+	For all \(a, b \in \mathbb{R}\), with \(a < b\), there exist infinitely many \(q \in \mathbb{Q}\) with \(a < q < b\).
+\end{cor}
