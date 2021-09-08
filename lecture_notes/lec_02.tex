@@ -1,0 +1,113 @@
+\lecture{2}{2021-09-01}{}
+
+\section{Bounds}
+
+\begin{defn}{Upper bound}{upperbound}
+	If \(F\) is an ordered field, and \(A \subset F\), then we say that some \(b \in F\) is an \emph{upper bound of \(A\) } if \(a \leq b\) for all \(a \in A\).
+
+	If a set \(A\) has an upper bound, we say that \(A\) is \emph{bounded above}.
+\end{defn}
+
+\begin{defn}{Supremum}{supremum}
+	If \(F\) is an ordered field, and \(A \subset F\), we say \(s \in F\) is the \emph{least upper bound of \(A\)}, or \emph{supremum of \(A\)}, denoted by \(\sup(A)\), if:
+	\begin{enumerate}
+		\item \(s\) is an upper bound of \(A\), and
+		\item if \(b\) is any upper bound of \(A\), then \(s \leq b\).
+	\end{enumerate}
+\end{defn}
+
+\begin{exmp}{}{}
+	Let \(F = \mathbb{Q}\) and \(A = \{0, -1, -\frac{1}{2}, -\frac{1}{3}, -\frac{1}{4}, \dots\}\). Then,  \(\sup(A) = 0\).
+\end{exmp}
+
+\begin{defn}{Lower bound}{lowerbound}
+	If \(F\) is an ordered field, and \(A \subset F\), then we say that some \(b \in F\) is a \emph{lower bound of \(A\) } if \(a \geq b\) for all \(a \in A\).
+
+	If a set \(A\) has a lower bound, we say that \(A\) is \emph{bounded below}.
+\end{defn}
+
+\begin{defn}{Infimum}{infimum}
+	If \(F\) is an ordered field, and \(A \subset F\), we say \(s \in F\) is the \emph{greatest lower bound of \(A\)}, or \emph{infimum of \(A\)}, denoted by \(\inf(A)\), if:
+	\begin{enumerate}
+		\item \(s\) is a lower bound of \(A\), and
+		\item if \(b\) is any lower bound of \(A\), then \(s \geq b\).
+	\end{enumerate}
+\end{defn}
+
+\section{Absolute value}
+
+Before we dig more deeply into the idea of a supremum, consider this definition that comes just from the structure of an ordered field.
+
+\begin{defn}{Absolute value}{absolutevalue}
+	If \(F\) is an ordered field, and \(x \in F\), let \[
+		|x| =
+		\begin{cases}
+			x \text{\ if\ } x \geq 0\text{,} \\
+			-x \text{\ if\ } x < 0\text{.}
+		\end{cases}
+	\]
+\end{defn}
+
+\begin{thm}{}{}
+	If \(F\) is an ordered field, and \(x \in F\), then \(|x| \geq 0\).
+\end{thm}
+
+\begin{dem}{}{}
+	If \(x \geq 0\), then \(|x| = x \geq 0\).
+	If \(x \leq 0\), then \(0 = x + (-x) \leq 0 + (-x) = -x = |x|\).
+\end{dem}
+
+\begin{thm}{}{|-x|=|x|}
+	If \(F\) is an ordered field, and \(x \in F\), then \(|-x| = |x|\).
+\end{thm}
+
+\begin{dem}{}{}
+	If \(x \geq 0\), then \(0 = x + (-x) \geq 0 + (-x) = -x\), therefore \(|-x| = -(-x) = x = |x|\).
+	If \(x \leq 0\), then \(0 = x + (-x) \leq 0 + (-x) = -x\), therefore \(|-x| = -x = |x|\).
+\end{dem}
+
+\begin{thm}{}{}
+	If \(F\) is an ordered field, and \(x, y \in F\), then \(|xy| = |x||y|\).
+\end{thm}
+
+\begin{dem}{}{}
+	If \(x \geq 0\) and \(y \geq 0\), then \(xy \geq 0\) and \(|xy| = xy = |x||y|\).
+
+	If \(x \geq 0\) and \(y \leq 0\), then \(0 = y + (-y) \leq 0 + (-y) = -y\). So we apply the previous case with \(x\) and \(-y\) and also Theorem \ref{thm:|-x|=|x|} to obtain \(|xy| = |-xy| = |x(-y)| = |x||-y| = |x||y|\).
+
+	If \(x \leq 0\) and \(y \geq 0\), then \(0 = x + (-x) \leq 0 + (-x) = -x\). So we apply the first case with \(-x\) and \(y\) and also Theorem \ref{thm:|-x|=|x|} to obtain \(|xy| = |-xy| = |(-x)y| = |-x||y| = |x||y|\).
+
+	If \(x \leq 0\) and \(y \leq 0\), then \(0 = x + (-x) \leq 0 + (-x) = -x\) and \(0 = y + (-y) \leq 0 + (-y) = -y\). So we apply the first case with \(-x\) and \(-y\) and also Theorem \ref{thm:|-x|=|x|} to obtain \(|xy| = |(-x)(-y)| = |-x||-y| = |x||y|\).
+\end{dem}
+
+\begin{thm}{Triangle inequality}{triangleinequality}
+	If \(F\) is an ordered field, and \(x, y \in F\), then  \[ |x + y| \leq |x| + |y|.\]
+\end{thm}
+
+\begin{dem}{}{}
+	If \(x \geq 0\), then \(|x| = x\). If \(x \leq 0\), then \(x \leq 0 = x + (-x) \leq 0 + (-x) = x\), so \(|x| = -x \geq x\). In either case, \(|x| \geq x\).
+
+	Thus,  \(|x| + |y| \geq x + y\)	and \(|x| + |y| = |-x| + |-y| \geq - x - y = -(x + y)\). Since  \(|x + y| = x + y\) or  \(|x + y| = -(x+y)\), in either case, \(|x| + |y| \geq |x + y|\).
+\end{dem}
+
+\begin{thm}{Reverse triangle inequality}{reversetriangleinequality}
+	If \(F\) is an ordered field, and \(x, y \in F\), then \[
+		|x - y| \geq ||x| - |y||.
+	\]
+\end{thm}
+
+\begin{dem}{}{}
+	Triangle inequality implies that \(|x| = |(x - y) + y| \leq |x - y| + |y|\) and  \(|y| = |(y - x) + x| \leq |y - x| + |x|\). Equivalently, we have \(|x - y| \geq |x| - |y|\) and \(|x - y| \geq |y| - |x|\); consequently, \(|x - y| \geq ||x| - |y||\).
+\end{dem}
+
+\section{Completeness: the key to define the real numbers}
+
+\begin{defn}{Completeness}{completeness}
+	Given \(F\) an ordered field, we say \(F\) is \emph{complete} if, for any subset \(A \subset F\) bounded above and nonempty, the supremum of \(A\) exists\footnote{and is an element of \(F\), as the definition requires.}.
+\end{defn}
+
+\begin{defn}{Real numbers}{realnumbers}
+	The set of real numbers is a complete ordered field. In other words, we define \(\mathbb{R}\) to be any set that obeys the field axioms, the order axioms and the Axiom of Completeness.
+\end{defn}
+
+Subtely, this leaves open the possibility that there is more than one set that is ``the real numbers'', or no such set. However, there is a theorem that states that there is a unique complete ordered field\footnote{up to isomorphism.}.

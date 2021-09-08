@@ -1,0 +1,35 @@
+\lecture{3}{2021-09-03}{}
+
+\begin{thm}{\(\epsilon\)-sup Theorem}{e-sup}
+	Given \(A \subset \mathbb{R}\) nonempty and bounded above, and given \(s\) an upper bound of \(A\), then \(s = \sup(A)\) if, and only if, for all \(\epsilon > 0\), there exists \(a \in A\) such that \(a > s - \epsilon\).
+\end{thm}
+
+\begin{dem}{}{}
+	Supppose \(s = \sup(A)\). Then, \(s - \epsilon\) is not an upper bound of \(A\). Therefore, there exists \(a \in A\) such that \(a > s - \epsilon\).
+
+	Suppose \(s \neq \sup(A)\). Then, there exists an upper bound of \(A\) that is smaller than \(s\), say \(s - \delta\). Then, it follows that, for \(\epsilon = \delta / 2\), there is no \(a \in A\) such that \(a > s - \delta/2\), because  \(a \leq s - \delta < s - \delta/2\) for all \(a \in A\).
+\end{dem}
+
+\begin{defn}{Sum of Sets}{sumofsets}
+	Given \(A, B \subset \mathbb{R}\), we define their sum as \[
+		A + B = \{a + b : a \in A, b \in B\}
+	\]
+\end{defn}
+
+\begin{thm}{Supremum of Sum of Sets}{}
+	If \(A, B \subset \mathbb{R}\) are both nonempty and bounded above, then \[
+		\sup(A+B) = \sup(A) + \sup(B).
+	\]
+\end{thm}
+
+\begin{dem}{}{}
+	Since \(\sup(A)\) is an upper bound of \(A\), it holds that \(a \leq \sup(A)\) for all \(a \in A\).
+	Since \(\sup(B)\) is an upper bound of \(B\), it holds that \(b \leq \sup(B)\) for all \(b \in B\).
+	Therefore, \(a + b \leq \sup(A) + \sup(B)\) for all \(a \in A\) and \(b \in B\), i.e., \(x \leq \sup(A) + \sup(B)\) for all \(x \in A + B\); thus, \(\sup(A) + \sup(B)\) is an upper bound of \(A + B\).
+
+	Let \(\epsilon > 0\) be any positive real number.
+	\nameref{thm:e-sup} implies that there exists \(a \in A\) such that \(a > \sup(A) - \epsilon/2\).
+	\nameref{thm:e-sup} also implies that there exists \(b \in B\) such that \(b > \sup(B) - \epsilon/2\).
+	Therefore, there exist \(a \in A\) and \(b \in B\) such that \(a + b > \sup(A) + \sup(B) - \epsilon\); thus, there exists \(x \in X\) such that \(x > \sup(A) + \sup(B) - \epsilon\).
+	Finally, by \nameref{thm:e-sup}, \(\sup(A+B) = \sup(A) + \sup(B)\).
+\end{dem}

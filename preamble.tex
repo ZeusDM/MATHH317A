@@ -6,9 +6,10 @@
 \usepackage{hyperref}
 \usepackage{amsmath,amssymb,amsfonts,dsfont}
 \usepackage{mathtools}
+\usepackage{etoolbox}
 \usepackage[only, mapsfrom]{stmaryrd}
 \usepackage{enumitem}
-\setlist{itemsep = 1pt, label = \textbf{\roman*.}}
+\setlist{noitemsep, label = \textbf{\roman*.}}
 \usepackage{todonotes}
 
 \usepackage{tcolorbox}
@@ -26,6 +27,7 @@
 	boxrule=0pt,
 	fonttitle=\sffamily\bfseries,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{thm}
 
 \newtcbtheorem[use counter from=thm]{lem}{Lemma}{
@@ -39,6 +41,7 @@
 	boxrule=0pt,
 	fonttitle=\sffamily\bfseries,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{lem}
 
 \newtcbtheorem[use counter from=thm]{defn}{Definition}{
@@ -46,12 +49,13 @@
 	sharp corners,
 	enhanced jigsaw,
 	breakable,
-	colback=NavyBlue!10,
-	colbacktitle=NavyBlue!70!black,
+	colback=Aquamarine!10,
+	colbacktitle=Aquamarine!70!black,
 	coltitle=White,
 	boxrule=0pt,
 	fonttitle=\sffamily\bfseries,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{defn}
 
 \newtcbtheorem[use counter from=thm]{prop}{Proposition}{
@@ -65,6 +69,7 @@
 	boxrule=0pt,
 	fonttitle=\sffamily\bfseries,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{prop}
 
 \newtcbtheorem[no counter]{que}{Question}{
@@ -78,6 +83,7 @@
 	boxrule=0pt,
 	fonttitle=\sffamily\bfseries,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{que}
 
 \newtcbtheorem[no counter]{exmp}{Example}{
@@ -85,12 +91,13 @@
 	sharp corners,
 	enhanced jigsaw,
 	breakable,
-	colback=NavyBlue!10,
-	colbacktitle=NavyBlue!70!black,
+	colback=Orange!10,
+	colbacktitle=Orange!70!black,
 	coltitle=White,
 	boxrule=0pt,
 	fonttitle=\sffamily\bfseries,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{exmp}
 
 \newtcbtheorem[no counter]{dem}{Proof}{
@@ -105,7 +112,10 @@
 	boxrule=2pt,
 	fonttitle=\sffamily\itshape,
 	description font=\normalfont\sffamily,
+	parbox=false,
 }{dem}
+
+\AtEndEnvironment{dem}{\null\hfill\textcolor{Black!20}{$\blacksquare$}}
 
 \newcommand{\lecture}[3]{
 	%\newpage
