@@ -44,6 +44,20 @@
 	parbox=false,
 }{lem}
 
+\newtcbtheorem[use counter from=thm]{cor}{Corolary}{
+	theorem style=plain apart,
+	sharp corners,
+	enhanced jigsaw,
+	breakable,
+	colback=NavyBlue!10,
+	colbacktitle=NavyBlue!70!black,
+	coltitle=White,
+	boxrule=0pt,
+	fonttitle=\sffamily\bfseries,
+	description font=\normalfont\sffamily,
+	parbox=false,
+}{cor}
+
 \newtcbtheorem[use counter from=thm]{defn}{Definition}{
 	theorem style=plain apart,
 	sharp corners,
@@ -73,15 +87,16 @@
 }{prop}
 
 \newtcbtheorem[no counter]{que}{Question}{
-	theorem style=plain apart,
+	theorem style=plain,
+	terminator sign={.},
 	sharp corners,
 	enhanced jigsaw,
 	breakable,
-	colback=NavyBlue!10,
-	colbacktitle=NavyBlue!70!black,
-	coltitle=White,
+	colback=Green!10,
+	colbacktitle=Green!70!black,
+	coltitle=Black,
 	boxrule=0pt,
-	fonttitle=\sffamily\bfseries,
+	fonttitle=\sffamily\itshape,
 	description font=\normalfont\sffamily,
 	parbox=false,
 }{que}

@@ -1,0 +1,43 @@
+\lecture{5}{2021-09-10}{Cardinality}
+
+\section{Nested Interval Property}
+
+\begin{thm}{Nested Interval Property}{nestedintervalproperty}
+	Suppose we have a sequence of closed intervals \(I_n = [a_n, b_n]\), with \(a_n \leq b_n\), that are nested decreasing, i.e.,  \[
+		I_1 \supseteq I_2 \supseteq I_3 \supseteq \cdots.
+	\]
+
+	Then \(\bigcap_{n=1}^\infty I_n \neq \varnothing\).
+\end{thm}
+
+\begin{dem}{}{}
+	Let \(A = \{a_1, a_2, \dots\}\) and \(B = \{b_1, b_2, \dots\}\). 
+
+	The ``nested'' condition implies that, if \(i < j\), then \([a_i, b_i] \supset [a_j, b_j]\). Therefore,  \(a_j, b_j \in [a_i, b_i]\), which implies that  \(a_i \leq a_j \leq b_j \leq b_i\) for all \(i < j\). Note that this implies that  \[
+		a_i \leq b_j \text{ and } a_j \leq b_i \text{, for all }i < j.
+	\]
+
+	We can rewrite it as \[
+		a_i \leq b_j\text{, for all }i\text{ and }j.
+	\]
+
+	This implies that \(a_i\) is a lower bound of \(B\) for any \(i\), and also implies that \(b_j\) is an upper bound of \(A\) for any \(j\). Since \(A\) is bounded above, we can define \(x = \sup(A)\). Clearly, \(x\) is an upper bound of \(A\).
+
+	Suppose \(x\) is not a lower bound of \(B\). Then, there exists \(n\) such that \(x > b_n\). The \nameref{thm:e-sup}, with \(\epsilon = x - b_n > 0\), implies that there exists \(m\) such that \(a_m > x - (x - b_n) = b_n\), which contradicts the previous displayed equation. Therefore, \(x\) is a lower bound of \(B\).
+
+	Finally, \(x\) is both an upper bound of \(A\) and a lower bound of \(B\), thus, for all \(n\), \(a_n \leq x \leq b_n\), i.e.,  \(x \in [a_n, b_n]\). Therefore, \(x\) is in such intersection.
+\end{dem}
+
+\section{Cardinality}
+
+\begin{que}{}{}
+	Are all sets with an infinite number of elements the same size?
+\end{que}
+
+\begin{defn}{Cardinality}{}
+Given two sets \(A\) and \(B\), we say that \emph{\(A\) and \(B\) have the same cardinality} if there exists a bijection \(f\colon A \to B\). We will write \(A \sim B\) to say that \(A\) and \(B\) have the same cardinality.
+\end{defn}
+
+\begin{exmp}{}{}
+	The sets \(\mathbb{Z}_{>0} = \{1, 2, 3, 4, \dots\}\) and \(\{2, 4, 6, 8, \dots\}\) have the same cardinality.
+\end{exmp}
