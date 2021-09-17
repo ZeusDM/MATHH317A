@@ -18,6 +18,8 @@ Another perspective on the Cantor's proof arises by using the binary base, inste
 		|\mathbb{R}| = 2^{|\mathbb{N}|}.
 \]
 
+\chapter{Limits}
+
 \begin{defn}{Limit of a sequence}{limitsequence}
 	We say a sequence \((a_n) = a_1, a_2, a_3, \dots\) \emph{converges to a real number \(a\)} if, for every \(\epsilon > 0\), there exists \(N \in \mathbb{N}\) such that \(|a_n - a| < \epsilon\) for all \(n \geq N\).
 
@@ -55,7 +57,7 @@ Another perspective on the Cantor's proof arises by using the binary base, inste
 
 \begin{exmp}{}{}
 	We claim that \(\lim_{n\to\infty} \frac{2n+1}{n+3} = 2\). 
-	Note that we can rewrite \(\frac{2n+1}{n+3} = 2 - \frac{5}{n+3}\). For any \(\epsilon\), \nameref{thm:archimedeanproperties} imply that there exists \(N \in \mathbb{N}\) such that \(\frac{1}{N} < \frac{\epsilon}{5}\). Therefore, for all \(n \geq N\), it holds that \[
+	Note that we can rewrite \(\frac{2n+1}{n+3} = 2 - \frac{5}{n+3}\). For any \(\epsilon\), there exists \(N \in \mathbb{N}\) such that \(N > \frac{5}{\epsilon}\). Therefore, for all \(n \geq N\), it holds that \[
 		\left|\left(2 - \frac{5}{n+3}\right) - 2\right| = \frac{5}{n+3} < \frac{5}{N} < \epsilon\text{,}
 	\]
 	and our claim follows.
