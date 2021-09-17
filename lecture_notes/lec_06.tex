@@ -1,0 +1,52 @@
+\lecture{6}{2021-09-13}{}
+
+\begin{thm}{}{}
+	If \(A\) is countable and \(B\) is countable, then \(A \times B\) is countable.
+
+	Similarly, if \(A_1, A_2, \dots, A_n\) are each countable, then \(A_1 \times \cdots \times A_n\) is countable.
+	
+	Similarly, if \(A_1, A_2, \dots, A_n\) are each countable or finite, then \(A_1 \times \cdots \times A_n\) is countable or finite.
+\end{thm}
+
+\begin{thm}{}{countableunion}
+	If \(S_1, S_2, \dots\) are each countable, then their union is countable.
+
+	Similarly, if \(\{S_i\}_{i \in I}\) is a countable or finite collection of sets, which are each countable or finite; then their union is countable.
+\end{thm}
+
+\begin{exmp}{}{}
+	Let \(\mathcal{T}\) be the collection of finite subsets of \(\mathbb{N}\). For each \(i \in \mathbb{N}\), let \(A_i\) be the collection of subsets of \(\{1, 2, \dots, i\}\). Note that \(|A_i| = 2^i\), thus \(A_i\) is finite. Then, note that \(\varnothing \in A_1\), and, if \(S \in \mathcal{T}\) is non-empty, it holds that \(S \in A_{\max(S)}\); so \(\mathcal{T} = \bigcup_{i=1}^\infty A_i\).
+	
+	Therefore, by Theorem \ref{thm:countableunion}, we conclude that \(\mathcal{T}\) is countable or finite. Since \(\mathcal{T}\) is not finite, then it is countable.
+\end{exmp}
+
+\begin{thm}{}{countabletransitivityviafunctions}
+	If \(A\) is countable, and \(f: A \to B\) is surjective, then \(B\) is countable or finite.
+	
+	Similarly, if \(A\) is countable, and \(f: B \to A\) is injective, then \(B\) is countable or finite.
+
+	In particular, if \(A\) is countable, and \(A \supseteq B\), then \(B\) is countable or finite.
+\end{thm}
+
+% PROVE
+
+\begin{prop}{\(\mathbb{Q}\) is countable}{qiscountable}
+	\(\mathbb{Q}\) is countable.
+\end{prop}
+
+\begin{dem}{}{}
+	Consider the function \(f: \mathbb{Z} \times (\mathbb{Z} \setminus \{0\}) \to \mathbb{Q}\) defined by \(f(a, b) = \frac{a}{b}\). Clearly, \(f(p, q) = \frac{p}{q}\) for any \(\frac{p}{q} \in \mathbb{Q}\).
+\end{dem}
+
+\begin{prop}{}{}
+	\(\mathbb{R}\) is not countable.
+\end{prop}
+
+\begin{dem}{using nested intervals}{}
+	Assume \(\mathbb{R}\) is countable. So, there exists a bijection \(f: \mathbb{N} \to \mathbb{R}\).
+
+	Let \(I_1 = [f(1) + 1, f(2) + 2]\). Note that \(f(1) \notin I_1\). We will define \(I_{n+1}\) recursively. 
+	Suppose \(I_n = [a, b]\), then, define \(I_{n+1}\) as either \([a, \frac{2a + b}{3}]\) or \([\frac{a + 2b}{3}, b]\) such that \(f(i+1) \notin I_{n+1}\); that is possible since \(f(i+1)\) cannot be in both sets.
+
+	By the Nested Interval Property, there exists a real number \(r \in \bigcap_{i=1}^\infty I_n\). However, since \(f \) is a bijection, there exists \(m \in \mathbb{N}\) such that \(f(m) = r\). Therefore, \(r \notin I_m\), a contradiction.
+\end{dem}

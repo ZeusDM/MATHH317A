@@ -1,0 +1,62 @@
+\lecture{7}{2021-09-15}{Limits}
+
+\begin{dem}{using Cantor's diagonalization}{}
+	We'll prove \((0, 1)\) is uncountable, which implies \(\mathbb{R}\) is uncountable.
+
+	Assume \((0, 1)\) is countable, therefore, there exists a bijective function \(f: \mathbb{N} \to (0, 1)\).
+
+	Let's write out decimal expansions\footnote{What are decimal expansions? We only need to know that decimal expansions are unique except for some duplication, like \(0.09999 = 0.1\).} of \(f(1), f(2), \dots\). If there's doubt between a recurrent \(9\) or a recurrent \(0\) in the end, we choose the latter form. We write
+	\begin{align*}
+		f(i) &= 0.a_{i1}a_{i2}a_{i3}\dots,\\
+	\end{align*}
+	with \(a_{ij} \in \{0, 1, 2, 3, 4, 5, 6, 7, 8, 9\}\).
+	Let \(b_k = 1\), if \(a_{kk}\) is odd, and \(b_k = 2\), if \(a_{kk}\) is even. Note that \(c_{k} \neq b_{kk}\) and \(c_{k} \notin \{0, 9\}\) for all \(k\).
+	Therefore, \(x = 0.b_1b_2b_3\dots\) cannot be on the image of \(f\); a contradiction.
+\end{dem}
+
+Another perspective on the Cantor's proof arises by using the binary base, instead of the decimal base. For each real number \(x = 0.x_1x_2x_3\dots\), we can define a \(f(x) = \{n \in \mathbb{N} : a_n = 1\). This is almost\footnote{The same number with two expansions yields a problem.} a bijection because, but nevertheless, we can conclude that, in some sense, \[
+		|\mathbb{R}| = 2^{|\mathbb{N}|}.
+\]
+
+\begin{defn}{Limit of a sequence}{limitsequence}
+	We say a sequence \((a_n) = a_1, a_2, a_3, \dots\) \emph{converges to a real number \(a\)} if, for every \(\epsilon > 0\), there exists \(N \in \mathbb{N}\) such that \(|a_n - a| < \epsilon\) for all \(n \geq N\).
+
+	If this definition holds for some \(a\), we write \(\lim_{n\to\infty} a_n = a\) or \(a_n \to a\).
+
+	If this definition does not hold for any \(a\), we say \(\lim_{n\to\infty} a_n\) does not exist, or that the sequence diverges.
+\end{defn}
+
+\begin{prop}{The limit, if it exists, is unique}{}
+	If  \(\lim_{n\to\infty} a_n = a\) and  \(\lim_{n\to\infty} a_n = a'\), then \(a = a'\).
+\end{prop}
+
+\begin{dem}{}{}
+	For all \(\epsilon > 0\), there exists \(N_\epsilon \in \mathbb{N}\) such that \(|a_n - a|<\epsilon\) for all  \(n \geq N_\epsilon\).
+	For all \(\epsilon > 0\), there exists \(M_\epsilon \in \mathbb{N}\) such that \(|a_n - a'|<\epsilon\) for all  \(n \geq M_\epsilon\).
+
+	Therefore, for all \(\epsilon > 0\), there exists \(L_\epsilon \in \mathbb{N}\), namely \(\max\{N_\epsilon, M_\epsilon\}\), such that  \(|a_n - a| < \epsilon\) and  \(|a_n - a'| < 0\) for all  \(n \geq L_\epsilon\). Triangle inequality implies that \(|a - a'| < 2\epsilon\) for all \(\epsilon > 0\); thus \(a = a'\).
+\end{dem}
+
+\begin{exmp}{}{}
+	We claim that \(\lim_{n\to\infty} \frac{1}{n^2} = 0\).
+
+	This is true because, given \(\epsilon > 0\), we can choose \(N\) be a natural number larger than \(\sqrt{\frac{1}{\epsilon}}\). Then, for all \(n \geq N\), we have \[
+		\epsilon > \frac{1}{N^2} > \frac{1}{n^2} = \left|\frac{1}{n^2} - 0\right|.
+	\]
+\end{exmp}
+
+\begin{exmp}{The limit does not exist}{}
+	We claim that \(\lim_{n\to\infty} (-1)^n\) does not exist.  
+
+	Suppose it does exist, namely \(a\). Then, consider \(\epsilon = \frac{1}{2} \max\{|a - 1|, |a + 1|\}\). Not both \(|a - 1|\) and  \(|a + 1|\) can be zero, so  \(\epsilon > 0\). However, since \(\lim_{n\to\infty} = a\), for that \(\epsilon\), it must hold that there exists \(N \in \mathbb{N}\) so that for all \(n \geq N\), \(|a - (-1)^n| < \epsilon\).
+
+	In particular, note that plugging in \(n \mapsto N\) and \(n\mapsto N+1\) imply that \(|a - 1| < \epsilon\) and \(|a + 1| < \epsilon\); which is a contradiction given our choice of \(\epsilon\).
+\end{exmp}
+
+\begin{exmp}{}{}
+	We claim that \(\lim_{n\to\infty} \frac{2n+1}{n+3} = 2\). 
+	Note that we can rewrite \(\frac{2n+1}{n+3} = 2 - \frac{5}{n+3}\). For any \(\epsilon\), \nameref{thm:archimedeanproperties} imply that there exists \(N \in \mathbb{N}\) such that \(\frac{1}{N} < \frac{\epsilon}{5}\). Therefore, for all \(n \geq N\), it holds that \[
+		\left|\left(2 - \frac{5}{n+3}\right) - 2\right| = \frac{5}{n+3} < \frac{5}{N} < \epsilon\text{,}
+	\]
+	and our claim follows.
+\end{exmp}

@@ -39,5 +39,22 @@ Given two sets \(A\) and \(B\), we say that \emph{\(A\) and \(B\) have the same 
 \end{defn}
 
 \begin{exmp}{}{}
-	The sets \(\mathbb{Z}_{>0} = \{1, 2, 3, 4, \dots\}\) and \(\{2, 4, 6, 8, \dots\}\) have the same cardinality.
+	The sets \(\mathbb{N} = \{1, 2, 3, 4, \dots\}\) and \(\{2, 4, 6, 8, \dots\}\) have the same cardinality.
 \end{exmp}
+
+\begin{defn}{Countability}{countability}
+	We say a set \(S\) is \emph{countable} if it has the same cardinality as \(\mathbb{N}\). If a set is not a finite set and not countable, then we say it is \emph{uncountable}.
+\end{defn}
+
+\begin{prop}{\(\mathbb{N}^2\) is countable}{N2iscountable}
+	\(\mathbb{N}^2\) is countable.
+\end{prop}
+
+% TODO: Diagonal figure
+
+\begin{dem}{}{}
+	The function \(f\colon \mathbb{N}^2 \to \mathbb{N}\), defined by \[
+		f(i, j) = \frac{(i + j - 1)(i + j - 2)}{2} + i
+	\]
+	is a bijection.
+\end{dem}
