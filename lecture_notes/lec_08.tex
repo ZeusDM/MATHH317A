@@ -8,12 +8,13 @@
 	\end{align*}
 \end{exmp}
 
-\begin{thm}{Algebraic Manipulation of Limits}{}
+\begin{thm}{Algebraic Manipulation of Limits}{manipulationlimits}
 	Suppose that \(\lim_{n\to\infty} a_n = a\), \(\lim_{n\to\infty} b_n = b\) and \(c, d\) are constant real numbers. Then, 
 	\begin{enumerate}
 		\item \(\lim_{n\to\infty} (ca_n + db_n) = ca + db\)
 		\item \(\lim_{n\to\infty} a_nb_n = ab\)
 		\item \(\lim_{n\to\infty} (1/a_n) = 1/a\) if the \(a_n \neq 0\) for all  \(n\) and \(a \neq 0\).
+		\item \(\lim_{n\to\infty} (a_n/b_n) = a/b\) if the \(b_n \neq 0\) for all  \(n\) and \(b \neq 0\).
 	\end{enumerate} 
 \end{thm}
 
@@ -32,16 +33,62 @@
 				ca + db - \epsilon < ca_n + db_n < ca + db + \epsilon,
 			\]
 			thus, \(\lim_{n\to\infty} ca_n + db_n\).
-		\item Without loss of generality, \(a, b\) are non-negative.
+		\item Let \(\epsilon > 0\).
+			Since \(\lim_{n\to\infty} a_n = a\), there exist \(N\) such that \[
+				|a_n - a| < 1
+			\] 
+			for all \(n \geq N\); therefore, \(|a_n| < |a| + 1\) for all \(n \geq N\).
 
-			Let's first solve for \(a = 0\) or \(b = 0\). Without loss of generality, \(b = 0\). Let \(\epsilon > 0\).
-			Since \(\lim_{n\to\infty} a_n = a\), there exist \(N\) such that \[0 = a - a < a_n < a + a = 2a\] for all \(n \geq N\).
-			Similarly, there exists \(M\) such that \[ -\frac{\epsilon}{2a} < b_n < \frac{\epsilon}{2a} \] for all \(n \geq M\).
-			Therefore, for all \(n \geq \max\{N, M\}\), it holds that \[ -\epsilon < a_nb_n < \epsilon\]
-			thus, \(\lim_{n\to\infty} a_nb_n = 0 = ab\).
+			Since \(\lim_{n\to\infty} a_n = a\), there exist \(M\) such that \[
+				|a_n - a| < \frac{\epsilon}{|b|}
+			\] 
+			for all \(n \geq M\).
+			Similarly, there exist \(O\) such that \[
+				|b_n - b| < \frac{\epsilon}{2 (|a| + 1)}
+			\] 
+			for all \(n \geq O\).
+			Therefore, for all  \(n \geq \max\{N, M, O\}\), it holds that
+			\begin{align*}
+				|a_nb_n - ab| &= |a_nb_n - a_nb + a_nb - ab| \\
+							  &= |a_n(b_n - b) + b(a_n - a)| \\
+							  &\leq |a_n(b_n - b)| + |b(a_n - a)| \\
+							  &< \epsilon.
+			\end{align*}
+			Therefore, \(\lim_{n\to\infty} a_nb_n = ab\).
 
-			Let's now solve for \(a > 0\) and \(b > 0\). \textcolor{red}{To be finished.}
+		\item Without loss of generality, suppose \(a > 0\).
+			Since \(\lim_{n\to\infty} a_n = a\), there exist \(N\) such that \[
+					a_n > \frac{a}{2} > 0
+				\]
+				for all \(n \geq N\).
+				Therefore, \(0 < \frac{1}{a_n} < \frac{2}{a}\) for all \(n \geq N\).
 
-		\item \textcolor{red}{To be finished.}
+			Let \(\epsilon > 0\). Since \(\lim_{n\to\infty} a_n = a\), there exists \(M\) so that \[
+				|a_n - a| < \frac{\epsilon a^2}{2}.
+			\]
+			Then, for all \(n \geq \max\{N, M\}\), it holds that
+			\begin{align*}
+				\left|\frac{1}{a_n} - \frac{1}{a}\right| &= |a - a_n|\cdot \frac{1}{a} \cdot \left|\frac{1}{a_n}\right|\\
+				&< \frac{\epsilon a^2}{2} \cdot \frac{1}{a} \cdot \frac{2}{a} \\
+				&< \epsilon.
+			\end{align*}
+
+			Therefore, \(\lim_{n\to\infty} \frac{1}{a_n} = \frac{1}{a}\).
+		\item Using \textbf{ii} and \textbf{iii}, we have 
+			\begin{align*}
+				\lim_{n\to\infty} \frac{a_n}{b_n} &= \lim_{n\to\infty} \left( a_n \frac{1}{b_n} \right) \\
+												  &= \left(\lim_{n\to\infty} a_n\right) \left(\lim_{n\to\infty}\frac{1}{b_n} \right) \\
+												  &= a\cdot \frac{1}{b} = \frac{a}{b}. 
+			\end{align*}
 	\end{enumerate}
 \end{dem}
+
+\begin{exmp}{}{}
+	Since \(\lim_{n\to\infty} (1 + 1/n) = \lim_{n\to\infty} 1 + \lim_{n\to\infty} (1/n) = 1 + 0 = 1\)
+	and \(\lim_{n\to\infty} (1 + 1/n^2) = \lim_{n\to\infty} 1 + \lim_{n\to\infty} (1/n) = 1 + 0 = 1\), we can conlude that
+	\begin{align*}
+		\lim_{n\to\infty} \frac{n^2 + n}{n^2 + 1} &= \lim_{n\to\infty} \frac{1 + 1/n}{1 + 1/n^2} \\
+												  &= \frac{\lim_{n\to\infty} 1 + 1/n}{\lim_{n\to\infty} 1 + 1/n^2} \\
+												  &= \frac{1}{1} = 1.
+	\end{align*}
+\end{exmp}

@@ -1,0 +1,22 @@
+\lecture{9}{2021-09-20}{}
+
+\begin{defn}{Boundness}{seqbounded}
+	A sequence \((a_n)_{n\in\mathbb{N}}\) is bounded if there exists \(M \in \mathbb{R}\) so that \(|a_n| \leq M\) for all \(n \in \mathbb{N}\).
+\end{defn}
+
+\begin{thm}{A convergent sequence is bounded}{}
+	If \((a_n)_{n\in\mathbb{N}}\) is a convergent sequence, then \((a_n)\) is bounded.
+\end{thm}
+
+\begin{dem}{}{}
+	Let \(L\) be the limit of such sequence.
+	Let \(\epsilon = 1\).
+	Then, there exists \(N \in \mathbb{N}\) so that \(|a_n - L| < 1\) for all \(n \geq N\).
+	Triangle inequality implies that \(|a_n| < |L| + 1\) for all \(n \geq N\).
+	Define  \[
+		M = \max\{|a_1| + 1, |a_2| + 1, \dots, |a_{N-1}| + 1, |L| + 1\}.
+	\]
+	Then, for this choice of \(M\), it holds that \(|a_n| < M\) for all \(n \in \mathbb{N}\).
+	Therefore, \((a_n)\) is bounded.
+\end{dem}
+

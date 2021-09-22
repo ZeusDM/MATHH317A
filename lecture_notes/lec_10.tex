@@ -1,0 +1,51 @@
+\lecture{10}{2021-09-22}{}
+
+\begin{defn}{Monotone sequences}{monotone}
+	We say \((a_n)\) is \emph{monotone increasing} if \(a_{n+1} \geq a_n\) for all n.
+
+	We say \((a_n)\) is \emph{strictly monotone increasing} if \(a_{n+1} < a_n\) for all n.
+
+	We say \((a_n)\) is \emph{monotone decreasing} if \(a_{n+1} \leq a_n\) for all n.
+
+	We say \((a_n)\) is \emph{strictly monotone decreasing} if \(a_{n+1} < a_n\) for all n.
+\end{defn}
+
+\begin{thm}{Monotone Convergence Theorem}{monotoneconvergence}
+	If \((a_n)\) is monotone increasing and bounded above, then it converges.
+	
+	Similarly, if \((a_n)\) is monotone decreasing and bounded below, then it converges.
+\end{thm}
+
+\begin{dem}{}{}
+	We will only prove the first statement. Let \(\epsilon > 0\). Let \(a = \sup\{a_1, a_2, a_3, \dots\}\). \nameref{thm:e-sup} implies that there exists \(N\) so that \(a - a_N < \epsilon\). Since the sequence is monotone increasing, for all \(n \geq N\), we have that  \[
+		|a - a_n| = a - a_n < \epsilon;
+	\]
+	thus, \(\lim_{n\to\infty} a_n = n\).
+\end{dem}
+
+\begin{exmp}{}{}
+	What in the world is \(\sqrt{6 + \sqrt{6 + \sqrt{6 + \cdots}}}\)? If it exists, it would be plausible to be the limit of the sequence  \[
+		\sqrt{6}, \quad \sqrt{6+\sqrt{6}}, \quad \sqrt{6 + \sqrt{6 + \sqrt{6}}}, \dots
+	\]
+
+	The easier way to make sense of this sequence is using recursion. We will define it as \[
+		a_1 = \sqrt{6}, \quad \text{and} \quad a_n = \sqrt{6+a_{n-1}} \text{ for } n \geq 2.
+	\]
+
+	We know that \(a_1 = \sqrt{6} < \sqrt{6 + \sqrt{6}} = a_2\). Suppose that \(a_{n-1} < a_n\). Then, \(a_n = \sqrt{6 + a_{n-1}} < \sqrt{6 + a_n} = a_{n+1}\). Therefore, by induction,  \(a_{n+1} > a_n\) for all \(n \geq 1\), i.e., the sequence \(a_n\) is monotone increasing. 
+
+	We also know that \(a_1 < 10\). Suppose that \(a_{n-1} < 10\). Then, \(a_n = \sqrt{6 + a_n} < \sqrt{16} < 10\). Therefore, by induction,  \(a_n < 10\) for all  \(n \geq 1\), i.e., \(10\) is an upper bound of \(a_n\).
+
+	By the \nameref{thm:monotoneconvergence}, we conclude that \(a_n\) has a limit. Finally, \begin{align*}
+		\left(\lim_{n \to \infty} a_n\right)^2 &= \lim_{n\to\infty} a_n^2 \\
+											   &= \lim_{n\to\infty} \left(6 + a_{n-1}\right) \\
+											   &= 6 + \lim_{n\to\infty} a_n;
+	\end{align*}
+	therefore, \(\lim_{n\to\infty}a_n = 3\) or  \(\lim_{n\to\infty}a_n = -2\). Since \(a_n\) evaluates to positive real numbers, the latter proposition yields a contradiction when plugging \(\epsilon \mapsto 1\). Therefore, the former proposition must be true, i.e.,  \[
+		\lim_{n\to\infty a_n} = 3.
+	\]
+\end{exmp}
+
+\begin{thm}{Limits preserve \(\leq\)}{limitpreserveleq}
+	Let \(N \in \mathbb{N}\). Suppose \(a_n \leq b_n\) for all \(n \geq N\), and \(\lim_{n\to\infty} a_n = a\) and \(\lim_{n\to\infty} b_n = b\). Then, \(a \leq b\).
+\end{thm}
