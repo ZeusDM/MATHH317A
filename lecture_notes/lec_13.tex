@@ -1,0 +1,39 @@
+\lecture{13}{2021-09-29}{}
+
+\begin{prop}{}{cauchybounded}
+	Every Cauchy sequence of real numbers is bounded.
+\end{prop}
+
+\begin{dem}{}{}
+	Let \(\epsilon = 1\). There exist \(N\) so that \(|a_m - a_n| < 1\) for all \(m, n \geq N\). This implies that \(|a_m - a_N| < 1\) for all \(m \geq N\), and consequently, by triangle inequality, \(|a_m| = |a_m - 0| \leq |a_m - a_N| + |a_N - 0| < 1 + |a_N|\) for all \(m \geq N\).
+
+	Therefore, if we set \[
+		M = \max\{|a_1|, |a_2|, \dots, |a_{N-1}|, |a_N| + 1\},
+	\]
+	we conclude \(|a_m| < M\) for all \(m\).
+\end{dem}
+
+\begin{prop}{}{subsequencecauchyconverges}
+	If \((a_n)\) is Cauchy, and if some subsequence of \((a_n)\) converges to some limit \(a\), then the whole sequence \((a_n)\) converges to \(a\).
+\end{prop}
+
+\begin{dem}{}{}
+	Let \(\epsilon > 0\). Let \((a_{k_i})\) be such sequence that converges to \(a\).
+
+	Also, since \((a_n)\) is Cauchy, there exists \(N\) so that \[
+		|a_m - a_n| < \epsilon
+	\] for all \(m, n \geq N\).
+
+	In particular, by setting \(m = k_n \geq n\), we conclude \[
+		|a_{k_n} - a_n| < \epsilon
+	\] for all \(n \geq N\). Therefore, \((a_{k_n} - a_n) \to 0\). Since \((a_{k_n}) \to 0\), \ref{thm:manipulationlimits}
+\end{dem}
+
+\begin{thm}{}{}
+	Every Cauchy sequence of real numbers is convergent.
+\end{thm}
+
+\begin{dem}{}{}
+	Let \((a_n)\) be a Cauchy sequence o
+\end{dem}
+

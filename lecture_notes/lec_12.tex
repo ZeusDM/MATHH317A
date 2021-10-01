@@ -1,0 +1,81 @@
+\lecture{12}{2021-09-27}{}
+
+\begin{thm}{Squeeze Theorem}{squeeze}
+Show that if $x_n \le y_n \le z_n$ for all $n \in \mathbb{N}$,
+and if $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = L$, then $\lim_{n\to\infty} y_n = L$.  
+\end{thm}
+
+\begin{dem}{}{}
+	For all \(n \in \mathbb{N}\), since \(x_n \leq y_n \leq z_n\), \( |z_n - x_n| = |z_n - y_n| + |y_n - x_n| \), which implies
+	\begin{equation} \label{eqn:zn-xn>zn-yn}
+		|z_n - x_n| \geq |y_n - x_n|.
+	\end{equation}
+
+	Theorem~\ref{thm:manipulationlimits} implies that \(\lim_{n\to\infty} (z_n - x_n) = \lim_{n\to\infty} z_n - \lim_{n\to\infty} x_n = 0\).
+
+	Let \(\epsilon > 0\). Therefore, since \((z_n - x_n) \to 0\), there exists \(N\) such that \(|z_n - x_n| < \epsilon\) for all \(n \geq N\).
+	Equation~(\ref{eqn:zn-xn>zn-yn}) implies that, for the same choice of \(N\), it holds that \(|y_n - x_n| < \epsilon\) for all \(n \geq N\). Therefore,  \((y_n - x_n) \to 0\).
+	Since \((x_n) \to L\) and \((y_n - x_n) \to 0\), theorem~\ref{thm:manipulationlimits} implies \((y_n) \to L\).
+\end{dem}
+
+\begin{exmp}{}{}
+	We claim that \(\lim_{n\to\infty} \sqrt{n^2 + 4n} - n = 2\).
+
+	A good intuition for that to be true is that \(\sqrt{n^2 + 4n} - n \approx \sqrt{n^2 + 4n + 4} - n = 2\).
+
+	Formally, \begin{align*}
+		\sqrt{n^2 + 4n} - n &= \frac{(n^2 + 4n) - n^2}{\sqrt{n^2 + 4n} + n^2}\\
+							&= \frac{4}{\sqrt{1 + 4/n} + 1} \to 2.
+	\end{align*}
+\end{exmp}
+
+\begin{thm}{Bolzano-Weierstrass Theorem}{bw}
+	Every bounded sequence has a convergent subsequence.
+\end{thm}
+
+\begin{dem}{}{}
+	Since \((a_n)\) is bounded, there exists \(M\) such that \(a_n \leq M\) for all \(n\). Let \(I_1 = [-M, M]\). Note that infinitely many terms of \((a_n)\) are in \(I_1\).
+
+	Suppose \(I_k = [a_k, b_k]\) contains infinitely many terms of \((a_n)\). Define \(I_{k+1}\) as either \([a_k, \frac{a_k + b_k}{2}]\) or  \([\frac{a_k+b_k}{2}, b_k]\) such that \(I_{k+1}\) contais infinitely many terms of \((a_n)\).
+
+	\nameref{thm:nestedintervalproperty} implies that there exists \(x \in I_j\) for all \(j\).
+
+	Let \(n_1 = 1\), so that \(a_{n_1} \in I_1\). Define \(n_{i+1} > n_i\), so that \(a_{n_{i+1}} \in I_{i+1}\); which is possible since \(I_{n+1}\) has infinitely many terms.
+
+	For each \(j\), both \(a_{n_j}\) and \(x\) are in \(I_j\). Since the width of \(I_j\) is \(2M/2^{j-1}\), we conclude  \[
+		-\frac{2M}{2^{j-1}} + x \leq a_{n_j}  \leq \frac{2M}{2^{j-1}} + x,
+	\]
+	thus the \nameref{thm:squeeze} implies \((a_{n_j}) \to x\).
+\end{dem}
+
+\begin{defn}{Cauchy sequence}{}	
+	A sequence is \emph{Cauchy} if, for all \(\epsilon > 0\), there exists \(N\) so that \(|a_m - a_n| < \epsilon\) for all \(m, n \geq N\).
+\end{defn}
+
+\begin{exmp}{}{}
+	We claim that the sequence \(a_n = \frac{(-1)^n}{n}\) is Cauchy.
+
+	Let \(\epsilon > 0\). Choose \(N\) larger than \(\frac{1}{2\epsilon}\).
+
+	Then, for all \(n, m \geq N\), it holds that
+	\begin{align*}
+		\left|\frac{(-1)^n}{n} - \frac{(-1)^m}{m}\right| &= \left|\frac{1}{n} \pm \frac{1}{m}\right| \\
+		&\leq \frac{1}{n} + \frac{1}{m} \\
+		&\leq \frac{2}{N} \\
+		&< \epsilon.
+	\end{align*}
+\end{exmp}
+
+\begin{prop}{}{}
+	Every convergent sequence is Cauchy.
+\end{prop}
+
+\begin{dem}{}{}
+	Let \(\epsilon > 0\). Since \((a_n) \to L\), there exists \(N\) so that  \[
+		|a_n - L| < \frac{\epsilon}{2}
+	\]
+	for all \(n \geq N\). Therefore, using the triangle inequality, \[
+		|a_n - a_m| \leq |a_n - L| + |L - a_m| < \epsilon
+	\]
+	for all \(n, m \geq N\); thus the sequence is Cauchy.
+\end{dem}

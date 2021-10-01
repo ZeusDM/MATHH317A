@@ -1,0 +1,24 @@
+\section{Subsequences}
+
+\lecture{11}{2021-09-24}{}
+
+\begin{defn}{Subsequence}{subsequence}
+	Given a sequence \((a_n)\) and a strictly monotone increasing sequence of natural numbers \((n_i)\), the sequence \((a_{n_i})\) is called a \emph{subsequence} of  \((a_n)\).
+
+In other words, we can say that \((b_k)\) is a subsequence of \((a_n)\) if there exists a strictly monotone increasing \(f: \mathbb{N} \to \mathbb{N}\) so that \(b_k = a_{f(k)}\) for all \(k\).
+\end{defn}
+
+\begin{thm}{}{seqconvsubseqconv}
+	A sequence converges to \(L\) if, and only if, every of its subsequences converges to \(L\).
+\end{thm}
+
+\begin{dem}{}{}
+	The inverse implication is straightforward, since the sequence is a subsequence of itself. Let's prove the direct implication.
+	Let \((a_n)\) be a sequence so that \(a_n \to L\). Let \((a_{n_i})\) be a subsequence of \((a_n)\).
+	Let \(\epsilon > 0\). Since \(a_n \to L\), there exists \(N\) so that \[
+		|L - a_n| < \epsilon,
+	\] for all \(n \geq N\). Note that \(n_i \geq i\). Therefore, for the same choice of \(N\), it holds that \[
+		|L - a_{n_i}| < \epsilon
+	\] for all \(i \geq N\).
+	Therefore,  \(a_{n_i} \to L\).
+\end{dem}

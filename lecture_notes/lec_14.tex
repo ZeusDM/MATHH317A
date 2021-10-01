@@ -1,0 +1,24 @@
+\section{Series}
+\lecture{14}{2021-10-01}{Series}
+
+\begin{defn}{Series}{series}
+	Given a sequence \((a_n)\), we associate it with a sequence \((s_n)\), defined by \[
+		s_n = \sum_{k = 1}^n a_k.
+	\]
+
+	As an abuse of notation, we denote \((s_n)\) using the symbolic expression \[
+		a_1 + a_2 + a_3 + \cdots
+	\]
+	or \[
+		\sum_{n=1}^\infty a_n.
+	\]
+
+	We call those expressions \emph{(infinite) series}. Each \(s_n\) is called a \emph{partial sum} of this series. If \((s_n)\) converges to \(s\), we say that the series \emph{converges}, which we denote symbolically by \[
+		\sum_{n=1}^\infty a_n = s,
+	\]
+	which we call the sum of the series; though it is actually the limit of a sequence of partial sums.
+
+	If \((s_n)\) diverges, we say that the series diverges.
+\end{defn}
+
+Note that theorems about sequences can be stated in terms of series and vice versa, by defining \(a_1 = s_1\) and \(a_n = s_n - s_{n-1}\). 
