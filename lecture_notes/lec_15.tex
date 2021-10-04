@@ -1,0 +1,48 @@
+\lecture{15}{2021-10-04}{}
+
+\begin{thm}{Algebraic Manipulation of Series}{manipulationseries}
+	Suppose \(\sum_{n=1}^\infty a_n\) and \(\sum_{n=1}^\infty b_n\) converge. Then, for any \(c, d \in \mathbb{R}\), \[
+		\sum_{n = 1}^\infty (ca_n + db_n)
+	\]
+	converges to \[
+		c\cdot \sum_{n=1}^\infty a_n + d\cdot \sum_{n=1}^\infty b_n.
+	\]
+\end{thm}
+
+This theorem is a corollary of \nameref{thm:manipulationlimits}. 
+
+\begin{thm}{Comparison Test}{comparisontest}
+	Suppose \(0 \leq a_n \leq b_n\) for all \(n\). Then,
+	\begin{enumerate}
+		\item if \(\sum_{n=1}^\infty b_n\) converges, then \(\sum_{n=1}^\infty a_n\) converges. \label{thm:comparisontest:1}
+		\item if \(\sum_{n=1}^\infty a_n\) diverges, then \(\sum_{n=1}^\infty b_n\) diverges. \label{thm:comparisontest:2}
+	\end{enumerate}
+\end{thm}
+
+\begin{dem}{}{}
+	If \(\sum_{n = 1}^\infty b_n\) converges, then, by Proposition \ref{prop:monotoneconvergenceforseries}, the partial sums \(\sum_{k=1}^n b_k\) are bounded.  Since \(\sum_{k=1}^n a_k \leq \sum_{k=1}^n b_k\), we conclude the partial sums  \(\sum_{k=1}^n a_k\) are also bounded. Therefore, by Proposition \ref{prop:monotoneconvergenceforseries}, \(\sum_{n = 1}^\infty a_n\) converges. Therefore, \ref{thm:comparisontest:1} is true.
+
+	\ref{thm:comparisontest:2} follows from \ref{thm:comparisontest:1} by contraposition.
+\end{dem}
+
+\begin{thm}{Cauchy Criterion for Series}{cauchyforseries}
+	A series \(\sum_{n=1}^\infty a_n\) converges if, and only if, for all \(\epsilon > 0\), there exists \(N\) so that \[
+		\left|\sum_{k=m+1}^n a_k\right| < \epsilon
+	\]
+	for all \(n > m \geq N\).
+\end{thm}
+
+This theorem is a corollary of Theorem \ref{thm:cauchyconvergentreal}.
+
+With this theorem, we can provide another proof for \ref{thm:comparisontest:1} of \nameref{thm:comparisontest}.
+
+\begin{dem}{of \ref{thm:comparisontest:1} of \nameref{thm:comparisontest}}{}
+	If \(\sum_{n = 1}^\infty b_n\) converges, then, by the \nameref{thm:cauchyforseries}, for all \(\epsilon > 0\), there exists \(N\), so that \[
+		\left|\sum_{k=m+1}^n b_k\right| < \epsilon
+	\] for all \(n > m \geq N\).
+
+	For any \(\epsilon > 0\), with the choice of \(N\) given above, we have that  \[
+		\left|\sum_{k=m+1}^n a_k\right| \leq
+		\left|\sum_{k=m+1}^n b_k\right| < \epsilon
+	\] for all \(n > m \geq N\). Therefore, by the \nameref{thm:cauchyforseries}, \(\sum_{n=1}^\infty a_n\) converges.
+\end{dem}

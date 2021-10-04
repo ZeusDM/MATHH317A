@@ -6,14 +6,14 @@
 		s_n = \sum_{k = 1}^n a_k.
 	\]
 
-	As an abuse of notation, we denote \((s_n)\) using the symbolic expression \[
+	As an abuse of notation\footnote{In my honest opinion, this is a really bad notation.}, we denote \((s_n)\) using the symbolic expression \[
 		a_1 + a_2 + a_3 + \cdots
 	\]
 	or \[
 		\sum_{n=1}^\infty a_n.
 	\]
 
-	We call those expressions \emph{(infinite) series}. Each \(s_n\) is called a \emph{partial sum} of this series. If \((s_n)\) converges to \(s\), we say that the series \emph{converges}, which we denote symbolically by \[
+	We call those expressions \emph{(infinite) series}. Each \(s_n\) is called a \emph{partial sum} of this series. If \((s_n)\) converges to \(s\), we say that the series \emph{converges}, which we denote symbolically\footnote{Using the same symbolic arrangement as before! Who did this?} by \[
 		\sum_{n=1}^\infty a_n = s,
 	\]
 	which we call the sum of the series; though it is actually the limit of a sequence of partial sums.
@@ -22,3 +22,88 @@
 \end{defn}
 
 Note that theorems about sequences can be stated in terms of series and vice versa, by defining \(a_1 = s_1\) and \(a_n = s_n - s_{n-1}\). 
+
+\begin{exmp}{}{}
+	Suppose \(a_n = (-1)^n\). Consider the infinite series  \(
+		-1 + 1 - 1 + 1 - 1 + 1 - \cdots
+		\).
+	Then, a formula for the partial sums is \(
+		s_n = 
+		\begin{cases}
+			-1, & \text{if } n \text{ is odd}\\
+			0, & \text{if } n \text{ is even.}
+		\end{cases}
+		\)
+		Therefore, the sum of the infinite series does not converge, since \(\lim_{n\to\infty}s_n\) does not exist.
+\end{exmp}
+
+\begin{exmp}{}{}
+	Suppose \(a_n = \frac{1}{2^n}\). Consider the infinite series  \(
+		\frac{1}{2} + \frac{1}{4} + \frac{1}{8} + \cdots
+	\).
+	Then, a formula for the partial sums is \(
+	s_n = 1 - \frac{1}{2^n}
+	\).
+	Therefore, the sum of the infinite series is \(1\), since \(\lim_{n\to\infty}s_n = 1\).
+\end{exmp}
+
+\begin{prop}{Geometric Series}{geometricseries}
+	\[
+		\sum_{n=0}^\infty r^n =
+		\begin{cases}
+			\frac{1}{1-r}, & \text{if } -1 < r < 1 \\
+			\text{does not converge}, & \text{otherwise}.
+		\end{cases}
+	\]
+\end{prop}
+
+\begin{dem}{}{}
+	Note that  \[
+		s_n = \sum_{k = 0}^n r^k = \frac{1 - r^{n+1}}{1 - r}.
+	\]
+
+	If \(-1 < r < 1\), then \((r_{n+1}) \to 0\),  which implies \((s_n) \to \frac{1}{1 - r}\).
+	Otherwise, then \((r_{n+1})\) does not converge, which implies \((s_n)\) does not converge.
+\end{dem}
+
+\begin{prop}{}{monotoneconvergenceforseries}
+	Suppose \((a_n)\) is a sequence and \(a_n \geq 0\) for all \(n\). Then, \(\sum_{n=1}^\infty a_n\) converges if, and only if, the partial sums \(\sum_{k=1}^n a_n\) are bounded.
+\end{prop}
+
+This proposition \ref{prop:monotoneconvergenceforseries} is a direct corollary of \nameref{thm:monotoneconvergence}.
+
+\begin{thm}{Condensation Test}{condensationtest}
+	Suppose \((a_n)\) is monotone decreasing and \(a_n \geq 0\) for all \(n\). Then, \(\sum_{n = 1}^\infty a_n\) converges if, and only if, \(\sum_{n=1}^\infty 2^n a_{2^n}\).
+\end{thm}
+
+\begin{dem}{}{}
+	Proposition \ref{prop:monotoneconvergenceforseries} implies that it suffices to show that
+	\begin{equation}\label{eqn:condensationtest:anbounded}
+		\left(\sum_{k=1}^n a_k\right)_{n \in \mathbb{N}} \text{ is bounded}
+	\end{equation} if, and only if,
+	\begin{equation}\label{eqn:condensationtest:2na2nbouned}
+		\left(\sum_{k=1}^m 2^ka_{2^k}\right)_{m \in \mathbb{N}} \text{ is bounded}.
+	\end{equation}
+
+	Suppose (\ref{eqn:condensationtest:anbounded}) is true. Therefore, there exists a constant \(N\) so that \(\sum_{k=1}^n a_k < N\) for all \(n\). Given any \(m \in \mathbb{N}\), we will plug \(n = 2^m - 1\) in the previous statement. This implies that \[
+		\sum_{k=1}^{2^m} a_k < N,
+	\]
+	which implies, \[
+		%a_1 + a_2 + (a_3 + a_4) + (a_5 + a_6 + a_7 + a_8) + \dots + (a_)
+		\sum_{}
+	\]
+\end{dem}
+
+\begin{thm}{\(p\)-series converges}{pseriesconverges}
+	\(\sum_{n = 1}^{\infty} \frac{1}{n^p}\) converges if, and only if, \(p > 1\).
+\end{thm}
+
+\begin{dem}{}{}
+	\nameref{thm:condensationtest} implies that \[
+		\sum_{n=1}^\infty \frac{1}{n^p}
+	\]
+	converges if, and only if, \[
+		\sum_{n=1}^\infty \frac{2^n}{2^{np}} = \sum_{n=1}^\infty \left(2^{1-p}\right)^{n} 
+	\]
+	converges. \nameref{prop:geometricseries} implies that the series above converges if, and only if, \(-1 < 2^{1-p} < 1\), which is equivalent to  \(p < 1\).
+\end{dem}
