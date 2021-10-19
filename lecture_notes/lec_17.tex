@@ -1,0 +1,46 @@
+\lecture{17}{2021-10-08}{}
+
+\begin{thm}{Limit Comparison Test}{limitcomparisontest}
+	Suppose \(a_n \geq 0\) and \(b_n > 0\) for all \(n\), \(\sum_{n=1}^\infty b_n\) converges and \(L = \lim_{n\to\infty} \frac{a_n}{b_n}\) exists. Then, \(\sum_{n=1}^\infty a_n\) converges.
+\end{thm}
+
+\begin{dem}{}{}
+	Since \(\lim_{n\to\infty} \frac{a_n}{b_n} = L\), there exists \(N\) so that \[
+		\frac{a_n}{b_n} < L + 1
+	\] for all \(n \geq N\).
+	Therefore,
+	\begin{align*}
+		\sum_{n=1}^\infty a_n &= \sum_{n=1}^{N-1}a_n + \sum_{n=N}^\infty a_n \\
+		&< \sum_{n=1}^{N-1}a_n + (L+1) \sum_{n=1}^\infty b_n.
+	\end{align*}
+
+	Since the first sum is finite and the second sum converges, we conclude that \(\sum_{n=1}^\infty a_n\) converges.
+\end{dem}
+
+\subsection{Reordering a series}
+
+\begin{thm}{}{}
+	If \(\sum_{n=1}^\infty a_n\) converges absolutely, then any reordering of \(\sum_{n=1}^\infty\) will converge to the same value as \(\sum_{n=1}^\infty a_n\).
+\end{thm}
+
+\begin{thm}{}{}
+	If \(\sum_{n=1}^\infty a_n\) converges conditionally and \(\alpha\) is any real number, then there exists an reordering of \(\sum_{n=1}^\alpha\) that converges to \(\alpha\).
+\end{thm}
+
+\begin{dem}{}{}
+	Define \begin{gather*}
+		a_n^+ = \max\{a_n, 0\} \\
+		a_n^- = \max\{-a_n, 0\}.
+	\end{gather*}
+
+	Notice that \begin{gather*}
+		a_n = a_n^+ - a_n^- \\
+		|a_n| = a_n^+ + a_n^-.
+	\end{gather*}
+
+	Suppose, by contradiction, one of the sequences \(\sum a_n^+\) or  \(\sum a_n^-\) converges. Without loss of generality, \(\sum a_n^+\) converges. Since \(\sum a_n\) converges, we conclude \(\sum a_n^- = \sum (a_n^+ - a_n) \) converges. Therefore, \(\sum |a_n| = \sum (a_n^+ + a_n^-)\) converges; a contradiction of the conditional convergence.
+
+	Therefore, both series \(\sum a_n^+\) and \(\sum a_n^-\) diverge.
+
+	\textcolor{red}{To be finished.}
+\end{dem}

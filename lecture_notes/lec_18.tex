@@ -1,0 +1,90 @@
+\lecture{18}{2021-10-18}{Open Sets}
+
+\chapter{Basic Topology} 
+
+\begin{defn}{Neighborhood}{neighborhood}
+	Let \(X\) be a metric space.
+	Given any \(a \in X\) and \(\epsilon > 0\), we define the \emph{\(\epsilon\)-neighborhood centered at \(a\)} as \[
+		V_{\epsilon}(a) = \{x \in \mathbb{R} : d(a, x) < \epsilon\}.
+	\]
+\end{defn}
+
+One can see that, if \(X = \mathbb{R}\), \[
+	V_\epsilon(a) = (a - \epsilon, a + \epsilon).
+\]
+
+\begin{defn}{Open Set}{open}
+	Let \(X\) be a metric space.
+	We say \(O \subset X\) is open with respect to \(X\) if, for all \(a \in O\), there exists \(\epsilon > 0\) so that \[
+		V_\epsilon(a) \subset O.
+	\]
+\end{defn}
+
+We'll usually omit ``with respect to \(X\)'' when the metric space is clear by context. Usually, in the examples, we'll consider \(X = \mathbb{R}\).
+
+\begin{exmp}{}{}
+	With respect to \(\mathbb{R}\),
+	\((1, 4)\) is an open set;
+	\([1, 4)\) is not open;
+	\((0, \infty)\) is open;
+	\(\mathbb{Q}\) is not open;
+	\((1, 3) \cup (4, 6)\) is open;
+	the empty set is open;
+	\(\mathbb{R}\) is open.
+
+	With respect to \(\mathbb{R}^2\),
+	\[
+		\{(x, y) \in \mathbb{R}^2 : 0 < x < 1 \text{ and } 0 < y < 1\}
+	\]
+	is open;
+	\[
+		\{(x, y) \in \mathbb{R}^2 : y \neq 0\}
+	\]
+	is open;
+	\[
+		\{ (x, y) \in \mathbb{R}^2 : y=0 \text{ and } 1 < x < 4 \}
+	\]
+	is not open.
+\end{exmp}
+
+\begin{prop}{Union of open sets}{unionopensets}
+	Let \(\mathcal C\) be a collection of open sets. Then, \[
+		\bigcup_{O \in \mathcal C} O
+	\] is an open set.
+\end{prop}
+
+\begin{dem}{}{}
+	Let \(x \in \bigcup_{O \in \mathcal C} O\). By definition of union, there exists a set \(O_x \in \mathcal C\) so that \(x \in O_x\). Since \(O_x\) is open, there exists \(\epsilon > 0\) so that \(V_\epsilon(x) \subset O_x\). Since \(O_x \subset \bigcup{O \in \mathcal C} O\), we conclude \(V_\epsilon(x) \subset \bigcup_{O \in \mathcal C} O\).
+
+	Since this argument was done for arbitrary \(x\), we conclude \(\bigcup_{O \in \mathcal C} O\) is open.
+\end{dem}
+
+\begin{prop}{Finite intersection of open sets}{intersectionopensets}
+	Let \(\mathcal C\) be a finite collection of open sets. Then, \[
+		\bigcap_{O \in \mathcal C} O
+	\] is an open set.
+\end{prop}
+
+\begin{prop}{}{}
+	There exists a collection \(\mathcal C\) of open sets such that \(\bigcap_{O \in \mathcal C} O\) is not open. 
+\end{prop}
+
+\begin{dem}{}{}
+	Let \(\mathcal C = \{ (-\frac{1}{n}, \frac{1}{n}) : n \in \mathbb{Z}_{>0}\}\) . Then, \[
+		\bigcap_{O \in \mathcal C} O = \{0\}\text{,}
+	\] which is not open.
+\end{dem}
+
+\begin{prop}{\(\epsilon\)-neighborhoods are open}{open}
+	Given any \(a \in X\), and any \(\epsilon > 0\), the set \(V_r(a)\) is open.
+\end{prop}
+
+\begin{dem}{}{}
+	Let \(b \in V_\epsilon(a)\). Therefore, \(d(a, b) < \epsilon\). Let \(\delta = \epsilon - d(a, b) > 0\).
+
+	Let \(c \in V_\delta(b)\). Therefore, \(d(b, c) < \delta = \epsilon - d(a, b)\). Therefore, by the triangle inequality, \[
+		d(a, c) \leq d(a,b) + d(b, c) < \epsilon,
+	\] i.e., \(c \in V_\epsilon(a)\). Since this was done for arbitrary \(c\), we conclude \(V_\delta(b) \subset V_\epsilon(a)\).
+
+	Since this was done for arbitrary \(b\), we conclude \(V_\epsilon(a)\) is open.
+\end{dem}

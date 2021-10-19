@@ -9,16 +9,17 @@ In other words, we can say that \((b_k)\) is a subsequence of \((a_n)\) if there
 \end{defn}
 
 \begin{thm}{}{seqconvsubseqconv}
-	A sequence converges to \(L\) if, and only if, every of its subsequences converges to \(L\).
+	Let \(X\) be a metric space.
+	A sequence of elements in \(X\) converges to \(L \in X\) if, and only if, every of its subsequences converges to \(L \in X\).
 \end{thm}
 
 \begin{dem}{}{}
 	The inverse implication is straightforward, since the sequence is a subsequence of itself. Let's prove the direct implication.
 	Let \((a_n)\) be a sequence so that \(a_n \to L\). Let \((a_{n_i})\) be a subsequence of \((a_n)\).
 	Let \(\epsilon > 0\). Since \(a_n \to L\), there exists \(N\) so that \[
-		|L - a_n| < \epsilon,
+		d(L, a_n) < \epsilon,
 	\] for all \(n \geq N\). Note that \(n_i \geq i\). Therefore, for the same choice of \(N\), it holds that \[
-		|L - a_{n_i}| < \epsilon
+		d(L, a_{n_i}) < \epsilon
 	\] for all \(i \geq N\).
 	Therefore,  \(a_{n_i} \to L\).
 \end{dem}

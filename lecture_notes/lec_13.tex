@@ -1,7 +1,8 @@
 \lecture{13}{2021-09-29}{}
 
 \begin{prop}{}{cauchybounded}
-	Every Cauchy sequence of real numbers is bounded.
+	Let \(W\) be a normed vector space.
+	Every Cauchy sequence of elements in \(W\) is a bounded sequence.
 \end{prop}
 
 \begin{dem}{}{}
@@ -14,19 +15,27 @@
 \end{dem}
 
 \begin{prop}{}{subsequencecauchyconverges}
-	If \((a_n)\) is Cauchy, and if some subsequence of \((a_n)\) converges to some limit \(a\), then the whole sequence \((a_n)\) converges to \(a\).
+	Let \(X\) be a metric space. Let \((a_n)\) be a sequence of elements of \(X\).
+	If \((a_n)\) is Cauchy, and if some subsequence of \((a_n)\) converges to some limit \(a \in X\), then the whole sequence \((a_n)\) converges to \(a \in X\).
 \end{prop}
 
 \begin{dem}{}{}
 	Let \(\epsilon > 0\). Let \((a_{k_i})\) be such sequence that converges to \(a\).
+	Thus, there exists \(N\) so that \[
+		d(a_{k_n}, a) < \epsilon/2
+	\]
+	for all \(n > N\).
 
-	Also, since \((a_n)\) is Cauchy, there exists \(N\) so that \[
-		|a_m - a_n| < \epsilon
-	\] for all \(m, n \geq N\).
-
+	Also, since \((a_n)\) is Cauchy, there exists \(M\) so that \[
+		d(a_m, a_n) < \epsilon/2
+	\] for all \(m, n \geq M\).
 	In particular, by setting \(m = k_n \geq n\), we conclude \[
-		|a_{k_n} - a_n| < \epsilon
-	\] for all \(n \geq N\). Therefore, \((a_{k_n} - a_n) \to 0\). Since \((a_{k_n}) \to 0\), \ref{thm:manipulationlimits}
+		d(a_{k_n}, a_n) < \epsilon/2
+	\] for all \(n \geq M\).
+
+	Therefore, for all \(n \geq \max\{N, M\}\), it holds that \[
+		d(a_n, a) \leq d(a_n, a_{k_n}) + d(a_{k_n}, a) < \epsilon;
+	\] in other words, \((a_n)\) converges to \(a\).
 \end{dem}
 
 \begin{thm}{}{cauchyconvergentreal}

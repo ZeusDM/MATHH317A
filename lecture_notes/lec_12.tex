@@ -1,8 +1,8 @@
 \lecture{12}{2021-09-27}{}
 
 \begin{thm}{Squeeze Theorem}{squeeze}
-Show that if $x_n \le y_n \le z_n$ for all $n \in \mathbb{N}$,
-and if $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = L$, then $\lim_{n\to\infty} y_n = L$.  
+	Let \((x_n)\), \((y_n)\), and \((z_n)\) be sequences of real numbers.
+	If $x_n \le y_n \le z_n$ for all $n \in \mathbb{N}$, and if $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = L$, then $\lim_{n\to\infty} y_n = L$.  
 \end{thm}
 
 \begin{dem}{}{}
@@ -30,7 +30,7 @@ and if $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = L$, then $\lim_{n\to\inf
 \end{exmp}
 
 \begin{thm}{Bolzano-Weierstrass Theorem}{bw}
-	Every bounded sequence has a convergent subsequence.
+	Every bounded sequence of real numbers has a convergent subsequence.
 \end{thm}
 
 \begin{dem}{}{}
@@ -49,7 +49,8 @@ and if $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = L$, then $\lim_{n\to\inf
 \end{dem}
 
 \begin{defn}{Cauchy sequence}{}	
-	A sequence is \emph{Cauchy} if, for all \(\epsilon > 0\), there exists \(N\) so that \(|a_m - a_n| < \epsilon\) for all \(m, n \geq N\).
+	Let \(X\) be a metric space. 
+	A sequence of elements in \(X\) is \emph{Cauchy} if, for all \(\epsilon > 0\), there exists \(N\) so that \(d(a_m, a_n) < \epsilon\) for all \(m, n \geq N\).
 \end{defn}
 
 \begin{exmp}{}{}
@@ -72,10 +73,10 @@ and if $\lim_{n\to\infty} x_n = \lim_{n\to\infty} z_n = L$, then $\lim_{n\to\inf
 
 \begin{dem}{}{}
 	Let \(\epsilon > 0\). Since \((a_n) \to L\), there exists \(N\) so that  \[
-		|a_n - L| < \frac{\epsilon}{2}
+		d(a_n, L) < \frac{\epsilon}{2}
 	\]
 	for all \(n \geq N\). Therefore, using the triangle inequality, \[
-		|a_n - a_m| \leq |a_n - L| + |L - a_m| < \epsilon
+		d(a_n, a_m) \leq d(a_n, L) + d(L, a_m) < \epsilon
 	\]
 	for all \(n, m \geq N\); thus the sequence is Cauchy.
 \end{dem}

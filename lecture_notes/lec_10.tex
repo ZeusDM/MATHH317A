@@ -1,16 +1,19 @@
 \lecture{10}{2021-09-22}{Monotone, limits preserve leq}
 
 \begin{defn}{Monotone sequences}{monotone}
-	We say \((a_n)\) is \emph{monotone increasing} if \(a_{n+1} \geq a_n\) for all n.
+	Let \((a_n)\) be a sequence of elements of an ordered set (for example, the real numbers).
 
-	We say \((a_n)\) is \emph{strictly monotone increasing} if \(a_{n+1} < a_n\) for all n.
+	We say \((a_n)\) is \emph{monotone increasing} if \(a_{n+1} \geq a_n\) for all $n$.
 
-	We say \((a_n)\) is \emph{monotone decreasing} if \(a_{n+1} \leq a_n\) for all n.
+	We say \((a_n)\) is \emph{strictly monotone increasing} if \(a_{n+1} < a_n\) for all $n$.
 
-	We say \((a_n)\) is \emph{strictly monotone decreasing} if \(a_{n+1} < a_n\) for all n.
+	We say \((a_n)\) is \emph{monotone decreasing} if \(a_{n+1} \leq a_n\) for all $n$.
+
+	We say \((a_n)\) is \emph{strictly monotone decreasing} if \(a_{n+1} < a_n\) for all $n$.
 \end{defn}
 
 \begin{thm}{Monotone Convergence Theorem}{monotoneconvergence}
+	Let \((a_n)\) be a sequence of real numbers.
 	If \((a_n)\) is monotone increasing and bounded above, then it converges.
 	
 	Similarly, if \((a_n)\) is monotone decreasing and bounded below, then it converges.
@@ -47,5 +50,6 @@
 \end{exmp}
 
 \begin{thm}{Limits preserve \(\leq\)}{limitpreserveleq}
-	Let \(N \in \mathbb{N}\). Suppose \(a_n \leq b_n\) for all \(n \geq N\), and \(\lim_{n\to\infty} a_n = a\) and \(\lim_{n\to\infty} b_n = b\). Then, \(a \leq b\).
+	Let \((a_n)\) and \((b_n)\) be sequences of real numbers.
+	Suppose \(a_n \leq b_n\) for all \(n\), and \(\lim_{n\to\infty} a_n = a\) and \(\lim_{n\to\infty} b_n = b\). Then, \(a \leq b\).
 \end{thm}

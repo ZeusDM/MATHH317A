@@ -1,0 +1,70 @@
+\lecture{16}{2021-10-06}{}
+
+\begin{thm}{Ratio Test}{ratiotest}
+	Given \(\sum_{n=1}^\infty a_n\), suppose that the limit \[
+		R = \lim_{n\to\infty} \left|\frac{a_{n+1}}{a_n}\right|
+	\]
+	exists.
+
+	If \(R < 1\), the series \(\sum_{n=1}^\infty a_n\) converges\footnote{In fact, it converges absolutely.}. If \(R > 1\), the series \(\sum_{n=1}^\infty a_n\) diverges.
+\end{thm}
+
+\begin{thm}{Divergence Test}{divergencetest}
+	If a series \(\sum{n=1}^\infty a_n\) converges, then \(\lim_{n\to\infty} a_n = 0\).
+\end{thm}
+
+\subsection{Mixed-sign series}
+
+Now, we seek to determine if \(\sum_{n=1}^\infty a_n\) converges when the \(a_n\) are a mix of non-negative and negative terms.
+
+Some previous test/tools can be applied to the mixed-sign case:
+\begin{enumerate}[label = \textbullet]
+	\item Definition of infinite series convergence;
+	\item Cauchy Criterion;
+	\item Geometric Series Test;
+	\item Ratio Test;
+	\item Divergence Test;
+\end{enumerate}
+but one key test cannot (at least not immediately):
+\begin{enumerate}[label = \textbullet]
+	\item Comparison Test.
+\end{enumerate}
+
+\begin{defn}{Absolute Convergence}{absoluteconvergence}
+	If \(\sum_{n=1}^\infty |a_n|\) converges, we say \(\sum_{n=1}^\infty a_n\) \emph{converges absolutely}.
+\end{defn}
+
+\begin{defn}{Conditional Convergence}{conditionalconvergence}
+	If \(\sum_{n=1}^\infty |a_n|\) diverges and \(\sum_{n=1}^\infty a_n\) converges, we say \(\sum_{n=1}^\infty\) \emph{converges conditionally}.
+\end{defn}
+
+\begin{thm}{Absolute Convergence Test}{absoluteconvergencetest}
+	If \(\sum_{n=1}^\infty |a_n|\) converges, then \(\sum_{n=1}^\infty a_n\) converges.
+\end{thm}
+
+\begin{thm}{Alternating Series Test}{alternatingseriestest}
+	Consider \((a_n)\) monotone decreasing with \(a_n \geq 0\) for all \(n\) and \(\lim_{n\to\infty} a_n = 0\). Then, the series \[
+		\sum_{n=1}^\infty (-1)^{n-1}a_1 = a_1 - a_2 + a_3 - a_4 + \cdots
+	\]
+	converges.
+\end{thm}
+
+\begin{dem}{}{}
+	Consider the partial sums \(s_n = \sum_{i=1}^n a_i\). 
+
+	Define \(I_{2k} = [s_{2k}, s_{2k-1}]\) and \(I_{2k+1} = [s_{2k}, s_{2k+1}]\).
+
+	Note that \(s_{2k+2} - s_{2k} = a_{2k+1} - a_{2k+2} \geq 0\) and \(s_{2k+2} - s_{2k+1} = -a_{2k+2} \leq 0\). Therefore \[
+		s_{2k+2} \in [s_{2k}, s_{2k+1}].
+	\] and consequently, \[
+		I_{2k+2} \subset I_{2k+1}.
+	\]
+
+	Similarly, since \(s_{2k+1} - s_{2k-1} = - a_{2k} + a_{2k+1} \leq 0\) and \(s_{2k+1} - s_{2k} = a_{2k+1} \geq 0\). Therefore \[
+		s_{2k+1} \in [s_{2k}, s_{2k-1}].
+	\] and consequently, \[
+		I_{2k+1} \subset I_{2k}.
+	\]
+
+	Given any \(\epsilon > 0\), since \((a_n) \to 0\), there exists 
+\end{dem}

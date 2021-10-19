@@ -18,12 +18,170 @@ Another perspective on the Cantor's proof arises by using the binary base, inste
 		|\mathbb{R}| = 2^{|\mathbb{N}|}.
 \]
 
+\chapter{Normed Vector Spaces and Metric Spaces}
+
+\section{Complex Numbers}
+
+\begin{defn}{Complex number}{complexnumber}
+	The set of complex numbers, denoted by \(\mathbb{C}\), is the set of pairs \((a, b)\) of real numbers. On top of that, we define addition and multiplication of complex numbers by
+	\begin{enumerate}[label = \textbullet]
+		\item \((a, b) + (c, d) = (a + c, b + d)\).
+		\item \((a, b) \cdot (c, d) = (ac - bd, ad + bc)\).
+	\end{enumerate}
+\end{defn}
+
+\begin{prop}{\(\mathbb{C}\) is a field}{cisafield}
+	\((\mathbb{C}, +, \cdot)\) is a field.
+\end{prop}
+
+Consider the complex numbers of the form \((a, 0)\).
+Note that \((a, 0) + (a', 0) = (a + a', 0)\) and  \((a, 0) \cdot (a', 0) = (aa', 0)\).
+Therefore, this subset of the complex numbers is isomorphic to \(\mathbb{R}\).
+Similarly as we've seen in previous chapters, we can say that \(\mathbb{R} \subset \mathbb{C}\), referring to this natural homomorphism; i.e., if \(a\) is a real number, then we'll also use \(a\) to talk about the complex number \((a, 0)\).
+
+\begin{defn}{Imaginary unit}{imaginaryunit}
+	Let \(i = (0, 1) \in \mathbb{C}\).
+\end{defn}
+
+\begin{prop}{}{}
+	Let \((a, b) \in \mathbb{C}\). Then, \[
+		(a, b) = a + bi.
+	\]
+\end{prop}
+
+\begin{dem}{}{}
+	\begin{align*}
+		a + bi &= (a, 0) + (b, 0)(0, 1) \\
+			   &= (a, 0) + (0, b) \\
+			   &= (a, b).
+	\end{align*}
+\end{dem}
+
+\begin{defn}{Conjugate}{conjugate}
+	Given real numbers \(a, b\) and a complex number \(z = a + bi\), we define \emph{the conjugate of \(z\)} as \(a - bi\), denoted by \(\overline z\).
+\end{defn}
+
+\begin{defn}{Real and imaginary part}{realimaginarypart}
+	Given real numbers \(a, b\) and a complex number \(z = a + bi\), the numbers \(a\) and \(b\) are called \emph{the real part} and \emph{the imaginary part of \(z\)}, respectively. Symbolically, we can write \[
+		\mathrm{Re}(z) = a, \qquad \mathrm{Im}(z) = b.
+	\]
+\end{defn}
+
+\begin{prop}{}{}
+	Given \(z, w \in \mathbb{C}\), we have
+	\begin{enumerate}[label = \textbullet]
+		\item \(\overline{z + w} = \overline z + \overline w\).
+		\item \(\overline{zw} = \overline z \cdot \overline w\).
+		\item \(z + \overline z = 2 \mathrm{Re}(z)\) and  \(z - \overline{z} = 2i \mathrm{Im}(z)\).
+		\item \(z \overline z\) is a non-negative real number.
+	\end{enumerate}
+\end{prop}
+
+\begin{defn}{Absolute value of a complex number}{absolutevaluecomplex}
+	If \(z = a + bi\) is a complex number, then we define \(|z| = (z\overline z)^{1/2} = (a^2 + b^2)^{1/2}\).
+\end{defn}
+
+\section{Euclidean Spaces}
+
+\begin{defn}{Euclidean Space}{euclideanspace}
+	Given an positive integer \(n\), let \(\mathbb{R}^n\) be the set of all \(n\)-uples \[
+		\mathbf x = (x_1, x_2, \dots, x_n)
+	\] of real numbers. If \(\mathbf x = (x_1, x_2, \dots, x_n)\) and \(\mathbf y = (y_1, y_2, \dots, y_n)\) are in \(\mathbb{R}^n\), and \(\alpha \in \mathbb{R}\), we define
+	\begin{align*}
+		\mathbf x + \mathbf y &= (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n) \\
+		\alpha \mathbf x &= (\alpha x_1, \alpha x_2, \dots, \alpha x_n).
+	\end{align*}
+	These definitions make the set \(\mathbb{R}^n\) into a vector space over the real field.
+
+	We further define the \emph{inner product} by \[
+		\mathbf x \cdot \mathbf y = \sum_{i=1}^n x_iy_i
+	\]
+	and the \emph{norm} of \(\mathbf x\) by \[
+		|\mathbf x| = (\mathbf x \cdot \mathbf x)^{1/2}.
+	\]
+
+	This structure (\(\mathbb{R}^n\), equipped with the inner product and norm) is called the Euclidean \(n\)-dimensional space.
+\end{defn}
+
+\begin{prop}{\(\mathbb{R}^n\) is a metric space}{}
+	Define \(d \colon \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}\) by \(d(\mathbf x, \mathbf y) = |\mathbf x - \mathbf y|\). \((\mathbb{R}^n, d)\) is a metric space.
+\end{prop}
+
+\section{Normed Vector Space}
+
+\begin{defn}{Normed Vector Space}{normedvectorspace}
+	Let \(F\) be either \(\mathbb{R}\) or \(\mathbb{C}\).
+
+	A \emph{normed vector space} is a \emph{vector space} \(W\) over \(F\), equipped with a norm \(||\textbullet||\colon W \to \mathbb{R}\), satistying the following conditions:
+	\begin{enumerate}
+		\item \(||v|| \geq 0\) for all \(v \in W\).
+		\item \(||v|| = 0\) if, and only if, \(v = 0\).
+		\item \(||cv|| = |c| \cdot ||v||\) for all \(v \in W\) and for all \(c \in F\).
+		\item \(||x + y|| \leq ||x|| + ||y||\) for all \(x, y \in W\).
+	\end{enumerate}
+\end{defn}
+
+\begin{exmp}{}{}
+	\(\mathbb{R}\) is a normed vector space, considering the norm \(|x|\).
+	\(\mathbb{C}\) is a normed vector space, considering the norm \(|z|\).
+\end{exmp}
+
+\subsection{Euclidean Spaces}
+
+\begin{defn}{Euclidean Space}{euclideanspace}
+	Given an positive integer \(n\), consider the vector space \(\mathbb{R}^n\).
+	If \(\mathbf x = (x_1, x_2, \dots, x_n)\) and \(\mathbf y = (y_1, y_2, \dots, y_n)\), we define the \emph{inner product} by \[
+		\mathbf x \cdot \mathbf y = \sum_{i=1}^n x_iy_i
+	\]
+	and the \emph{norm} of \(\mathbf x\) by \[
+		||\mathbf x|| = (\mathbf x \cdot \mathbf x)^{1/2}.
+	\]
+
+	This structure is called the Euclidean \(n\)-dimensional space.
+\end{defn}
+
+\begin{prop}{}{}
+	The Euclidean \(n\)-dimensional space is a normed vector space.
+\end{prop}
+
+\section{Metric Space}
+
+\begin{defn}{Metric Space}{metricspace}
+	A \emph{metric space} is a pair \((X, d)\), where \(X\) is a set and \(d\colon X \times X \to \mathbb{R}\) is a function, called \emph{metric}, that satisfies:
+	\begin{enumerate}[label = \textbullet]
+		\item \(d(x, y) \geq 0\) for all \(x, y \in X\); with equality if, and only if, \(x = y\).
+		\item \(d(x, y) = d(y, x)\) for all \(x, y \in X\). 
+		\item \(d(x, y) \leq d(x, z) + d(z, y)\) for all \(x, y, z \in X\).
+	\end{enumerate}
+\end{defn}
+
+\begin{exmp}{}{}
+	Consider \(d(x, y) = |x - y|\), in all following examples (with the appropriate domain).
+	\begin{enumerate}[label = \textbullet]
+		\item \((\mathbb{Z}, d)\) is a metric space.
+		\item \((\mathbb{Q}, d)\) is a metric space.
+		\item \((\mathbb{R}, d)\) is a metric space.
+		\item \((\mathbb{C}, d)\) is a metric space.
+	\end{enumerate}
+\end{exmp}
+
+Every normed vector space \(W\) is naturally also a metric space, by considering the metric \(d: W \times W \to \mathbb{R}\) defined by \(d(v, u) = ||v - u||\).
+
+\begin{exmp}{\(\mathbb{R}^n\) is a metric space}{}
+	Define \(d \colon \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}\) by \(d(\mathbf x, \mathbf y) = ||\mathbf x - \mathbf y||\). \((\mathbb{R}^n, d)\) is a metric space.
+\end{exmp}
+
+There are metric spaces which are not normed vector spaces, but they are out of the scope of this course.
+
+From now on in these notes, whenever you read ``\(X\) is a metric space'' or ``\(X\) is a normed vector space,'' it is useful to think about the prototypical examples of \(X = \mathbb{R}\), \(X = \mathbb{C}\), or \(X = \mathbb{R}^2\). 
+
 \chapter{Limits}
 
 \section{Sequences}
 
 \begin{defn}{Limit of a sequence}{limitsequence}
-	We say a sequence \((a_n) = a_1, a_2, a_3, \dots\) \emph{converges to a real number \(a\)} if, for every \(\epsilon > 0\), there exists \(N \in \mathbb{N}\) such that \(|a_n - a| < \epsilon\) for all \(n \geq N\).
+	Let \(X\) be a metric space.
+	We say a sequence \((a_n) = a_1, a_2, a_3, \dots\), where \(a_i \in X\), \emph{converges to \(a \in X\)} if, for every \(\epsilon > 0\), there exists \(N \in \mathbb{N}\) such that \(d(a_n, a) < \epsilon\) for all \(n \geq N\).
 
 	If this definition holds for some \(a\), we write \(\lim_{n\to\infty} a_n = a\) or \(a_n \to a\).
 
@@ -35,10 +193,10 @@ Another perspective on the Cantor's proof arises by using the binary base, inste
 \end{prop}
 
 \begin{dem}{}{}
-	For all \(\epsilon > 0\), there exists \(N_\epsilon \in \mathbb{N}\) such that \(|a_n - a|<\epsilon\) for all  \(n \geq N_\epsilon\).
-	For all \(\epsilon > 0\), there exists \(M_\epsilon \in \mathbb{N}\) such that \(|a_n - a'|<\epsilon\) for all  \(n \geq M_\epsilon\).
+	For all \(\epsilon > 0\), there exists \(N_\epsilon \in \mathbb{N}\) such that \( d(a_n, a) <\epsilon\) for all  \(n \geq N_\epsilon\).
+	For all \(\epsilon > 0\), there exists \(M_\epsilon \in \mathbb{N}\) such that \( d(a_n - a') <\epsilon\) for all  \(n \geq M_\epsilon\).
 
-	Therefore, for all \(\epsilon > 0\), there exists \(L_\epsilon \in \mathbb{N}\), namely \(\max\{N_\epsilon, M_\epsilon\}\), such that  \(|a_n - a| < \epsilon\) and  \(|a_n - a'| < 0\) for all  \(n \geq L_\epsilon\). Triangle inequality implies that \(|a - a'| < 2\epsilon\) for all \(\epsilon > 0\); thus \(a = a'\).
+	Therefore, for all \(\epsilon > 0\), there exists \(L_\epsilon \in \mathbb{N}\), namely \(\max\{N_\epsilon, M_\epsilon\}\), such that  \(d(a_n, a) < \epsilon\) and  \(d(a_n, a') < 0\) for all  \(n \geq L_\epsilon\). Triangle inequality implies that \(d(a, a') < 2\epsilon\) for all \(\epsilon > 0\); thus \(d(a, a') = 0\), and consequently \(a = a'\).
 \end{dem}
 
 \begin{exmp}{}{}
