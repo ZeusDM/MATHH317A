@@ -1,0 +1,51 @@
+\lecture{20}{2021-10-22}{}
+
+\begin{defn}{Closure}{closure}
+	The closure of \(A\), denoted by \(\overline A\), is the union of \(A\) with the set of its limit points.
+\end{defn}
+
+\begin{defn}{Interior}{interior}
+	The interior of \(A\), denoted by \(\mathring A\), is the set  \[
+		\mathring A = \{x \in A : \exists \epsilon>0,  V\epsilon(x) \subset A \}
+	\]
+\end{defn}
+
+\begin{defn}{Boundary}{boundary}
+	The boundary of \(A\), denoted by \(\partial A\), is \(\overline A - \mathring A\).
+\end{defn}
+
+\begin{prop}{}{}
+	\(\overline A\) is closed and, for any closed \(C\) containing \(A\), it also holds that \(C\) contains \(\overline A\).
+
+	In this sense, \(\overline A\) is the smallest closed set that contains \(A\).
+\end{prop}
+
+\begin{prop}{}{}
+	\(\mathring A\) is open and, for any open set \(O \subset A\), it also holds taht \(O \mathring A\).
+
+	In this sense, \(\mathring A\) is the largest open set contained in \(A\).
+\end{prop}
+
+\subsection{Random facts about limits that should have been in a previous chapter}
+
+\begin{thm}{}{}
+	Given a sequence \((v_n)\) in a metric space \(X\), \[
+		\lim_{n\to\infty} v_n = L \text{ if, and only if, } \lim_{n\to\infty} d(v_n, L) = 0.
+	\]
+\end{thm}
+
+\begin{prop}{}{}
+	Given a sequence \(\vec v_n = (x_{1, n}, x_{2, n}, \dots, x_{k, n})\) in  \(\mathbb{R}^k\), \[
+		\lim_{n\to\infty} \vec v_n = (L_1, L_2, \dots, L_k) \text{ if, and only if, } \lim_{n\to\infty} x_{i, n} = L_i \text{ for all \(1 \leq i \leq k\)}.
+	\]
+\end{prop}
+
+\subsection{Back to this chapter}
+
+\begin{thm}{Sequence Interpretation of Limit Point}{}
+	Given a set \(A\) in a metric space \(X\), \(w \in W\) is a limit point of \(A\) if, and only if, there exists a sequence \((v_n)\) in \(A\) so that \(v_n \neq w\) for all \(n\) and \(\lim_{n\to\infty} v_n = w\).
+\end{thm}
+
+\begin{thm}{Sequence Interpretation of a Closed Set}{}
+	Given a set \(A\) in a metric space \(X\), \(A\) is closed if, and only if, for any sequence \((v_n)\) in \(A\) that has limit \(w\) in \(W\), it holds that \(w \in A\).
+\end{thm}
