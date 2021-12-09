@@ -1,0 +1,33 @@
+\lecture{30}{2021-11-15}{}
+
+\begin{thm}{}{}
+	Given a function \(f\colon X \to Y\), \(f\) is continuous on \(X\) if, and only if, for all closed sets \(V \subset Y\), the inverse image \(f^{-1}(V)\) is an closed set.
+\end{thm}
+
+\begin{thm}{}{}
+	Given a function \(f\colon A \subset X \to Y\), \(f\) is continuous on \(X\) if, and only if, for all closed sets \(V \subset Y\), the inverse image \(f^{-1}(V)\) is relatively closed with respect to \(A\).
+\end{thm}
+
+\begin{thm}{}{f(compact)=compact}
+	If \(f\colon A \subset X \to Y\) is continuous on some \(S \subset A\) and \(S\) is a sequentially compact set, then \(f(S)\) is sequentially compact.
+\end{thm}
+
+\begin{dem}{}{}
+	Let \(y_1, y_2, \dots \in f(S)\). For each \(n\), there exists \(x_n \in A\) such that \(f(x_n) = y_n\). Since \(S\) is sequentially compact, the sequence \(x_1, x_2, \dots\) has a converging subsequence, say \(x_{n_1}, x_{n_2}, \dots\), that converge to \(L \in S\).
+
+	Since \(f\) is continuous, we can argue that the subsequence \(y_{n_1}, y_{n_2}, \dots\) converges to \(f(L) \in f(S)\), as desired to show that \(f(S)\) is continuous.
+\end{dem}
+
+If \(f\colon S \to \mathbb{R}\) is continuous, and \(S\) is sequentially compact, then \(f(S)\) is compact; thus it is closed. This means that \(\sup(f(S)), \inf(f(S)) \in f(S)\), which implies that \(f\) attains a maximum and a minimum. The especial case when \(S = [a, b]\) will be used a lot in the future.
+
+\begin{thm}{Extreme Value Theorem}{}
+	If \(f\colon A \subset X \to \mathbb{R}\) is continuous on some \(S \subset A\), and \(S\) is a sequentially compact set, then there are points \(x_0, x_1 \in S\) such that \[
+		f(x_0) \leq f(x) \leq f(x_1)
+	\] for all \(x \in S\).
+\end{thm}
+
+\begin{thm}{}{f(connected)=connected}
+	If \(f\colon A \subset X \to Y\) is continuous on some \(C \subset A\) with \(C\) a connected set, then \(f(C)\) is connected.
+\end{thm}
+
+

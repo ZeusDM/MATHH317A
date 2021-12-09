@@ -67,20 +67,19 @@
 			\end{align*}
 			Therefore, \(\lim_{n\to\infty} a_nb_n = ab\).
 
-		\item Without loss of generality, suppose \(a > 0\).
+		\item Triangle inequality implies that \(|a| \leq |a - a_n| + |a_n|\); thus \(|a_n| \geq |a| - |a - a_n|\).
 			Since \(\lim_{n\to\infty} a_n = a\), there exist \(N\) such that \[
-					a_n > \frac{a}{2} > 0
-				\]
-				for all \(n \geq N\).
-				Therefore, \(0 < \frac{1}{a_n} < \frac{2}{a}\) for all \(n \geq N\).
+				|a_n - a| < \frac{|a|}{2}.
+			\]
+			for all \(n \geq N\).  Therefore, \(|a_n| > |a| - \frac{|a|}{2} = \frac{|a|}{2}\), and consequently, \(\frac{2}{|a|} > \left|\frac{1}{a_n}\right|\) for all \(n \geq N\).
 
 			Let \(\epsilon > 0\). Since \(\lim_{n\to\infty} a_n = a\), there exists \(M\) so that \[
-				|a_n - a| < \frac{\epsilon a^2}{2}.
+				|a_n - a| < \frac{\epsilon |a|^2}{2}.
 			\]
 			Then, for all \(n \geq \max\{N, M\}\), it holds that
 			\begin{align*}
-				\left|\frac{1}{a_n} - \frac{1}{a}\right| &= |a - a_n|\cdot \frac{1}{a} \cdot \left|\frac{1}{a_n}\right|\\
-				&< \frac{\epsilon a^2}{2} \cdot \frac{1}{a} \cdot \frac{2}{a} \\
+				\left|\frac{1}{a_n} - \frac{1}{a}\right| &= |a - a_n|\cdot \left|\frac{1}{a}\right| \cdot \left|\frac{1}{a_n}\right|\\
+				&< \frac{\epsilon |a|^2}{2} \cdot \frac{1}{|a|} \cdot \frac{2}{|a|} \\
 				&< \epsilon.
 			\end{align*}
 

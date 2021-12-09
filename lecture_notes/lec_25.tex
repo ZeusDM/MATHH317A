@@ -1,0 +1,154 @@
+\chapter{Calculus}
+\lecture{25}{2021-11-03}{Calculus}
+
+\begin{defn}{Limit of a function to a point}{}
+	Let \(X, Y\) be a metric spaces.
+	Let \(p\) be a limit point of \(A \subset X\).
+	Given \(f \colon A \to Y\), we say that \[\lim_{x\to p} f(x) = L\] if, and only if, for all  \(\epsilon > 0\), there exists \(\delta > 0\) such that \[d(f(x), L) < \epsilon\] for all \(x \in A\) satisfying \(0 < d(x, p) < \delta\).
+\end{defn}
+
+\begin{exmp}{}{}
+	I claim that \(\lim_{x\to 4} \sqrt{x} = 2\).
+
+	For all \(\epsilon > 0\), define \(\delta = \epsilon > 0\). Then, if \(0 < |x - 4| < \delta\), it holds that \[
+		|\sqrt{x} - 2| < |(\sqrt{x} - 2)(\sqrt{x} + 2)| = |x - 4| < \delta = \epsilon,
+	\]
+	as desired.
+\end{exmp}
+
+\begin{exmp}{}{}
+	I claim that \(\lim_{(x, y) \to (1,2)} (x+y) = 3\).
+
+	For all \(\epsilon > 0\), define \(\delta = \epsilon/2 > 0\). Then, if \(0 < ||(x, y) - (1, 2)|| < \delta\),
+	it holds that
+	\begin{align*}
+		|(x+y) - 3| &= |(x - 1) + (y - 2)| \\
+					&\leq |x-1| + |y-2| \\
+					&\leq \sqrt{(x-1)^2 + (y-2)^2} + \sqrt{(x-1)^2 + (y-2)^2}  \\
+					&= 2 ||(x, y) - (1, 2)|| \\
+					&< \epsilon,
+	\end{align*}
+	as desired.
+\end{exmp}
+
+\begin{thm}{Algebraic Manipulation of Function Limits}{thm:manipulationlimitsfunctions}
+	Let \(X\) and \(Y\) be metric spaces.  Let \(p\) be a limit point of \(A \subset X\). Let \(f, g\colon A \to Y\).
+	Suppose \(\lim_{x \to p}f(x) = a\),  \(\lim_{x \to p}g(x) = b \in W\).
+
+	If \(X\) and \(Y\) are vector spaces over a field \(F\), then:
+	\begin{enumerate}
+		\item \(\lim_{x \to p}(cf(x) + dg(x)) = ca + db\)
+	\end{enumerate}
+
+	If \(Y\) is a field, then:
+	\begin{enumerate}[resume]
+		\item \(\lim_{x\to p}(f(x)g(x)) = ab\)
+		\item \(\lim_{x\to p}(1/f(x)) = 1/a\) if \(a \neq 0\).  
+		\item \(\lim_{x\to p}(f(x)/g(x)) = a/b\) if \(b \neq 0\).  
+	\end{enumerate}
+\end{thm}
+
+\begin{dem}{}{}
+	\begin{enumerate}
+		\item
+			Let \(\epsilon > 0\).
+			Since \(\lim_{x\to p}f(x) = a\), there exists \(\delta > 0\) such that \[
+				|f(x) - a| < \frac{\epsilon}{2|c|}
+			\] whenever \(0 < |x - p| < \delta\).
+			Since \(\lim_{x\to p}g(x) = b\), there exists \(\gamma > 0\) such that \[
+				|g(x) - b| < \frac{\epsilon}{2|d|}
+			\] whenever \(0 < |x - p| < \gamma\). Therefore, for all \(x \in X\) satisfying \(0 < |x - p| < \min\{\delta, \gamma\}\), we conclude that
+			\begin{align*}
+				|(cf(x) + dg(x)) - (ca + db)| &= |c(f(x) - a) + d(g(x) - b)| \\
+										   &\leq |c(f(x) - a)| + |d(g(x) - b)| \\
+										   &\leq |c||(f(x) - a)| + |d||(g(x) - b)| \\
+										   &< |c|\frac{|\epsilon|}{2|c|} + |d|\frac{\epsilon}{2|d|} = \epsilon; \\
+			\end{align*}
+			therefore, \(\lim_{x\to p} (cf(x) + dg(x)) = ca + db\).
+		\item Let \(\epsilon > 0\).
+			Since \(\lim_{x\to p} f(x) = a\), there exist \(\delta > 0\) such that \(|f(x) - a| < 1\) whenever \(0 < d(x, p) < \delta\); therefore, \[
+				|f(x)| < |a| + 1
+			\]
+			whenever \(0 < d(x, p) < \delta\).
+
+			Since \(\lim_{x\to p} f(x) = a\), there exist \(\gamma > 0\) such that \[
+				|f(x) - a| < \frac{\epsilon}{|b|}
+			\] 
+			whenever \(0 < d(x, p) < \gamma\).
+			Similarly, there exist \(\beta > 0\) such that \[
+				|g(x) - b| < \frac{\epsilon}{2 (|a| + 1)}
+			\] 
+			whenever \(0 < d(x, p) < \beta\).
+			Therefore, for all \(x \in A\) satisfying \(0 < d(x, p) < \min\{\delta, \gamma, \beta\}\), it holds that
+			\begin{align*}
+				|f(x)g(x) - ab| &= |f(x)g(x) - f(x)b + f(x)b - ab| \\
+							  &= |f(x)(g(x) - b) + b(f(x) - a)| \\
+							  &\leq |f(x)(g(x) - b)| + |b(f(x) - a)| \\
+							  &\leq |f(x)||g(x) - b| + |b||f(x) - a| \\
+							  &< \epsilon.
+			\end{align*}
+			Therefore, \(\lim_{x\to p} f(x)g(x) = ab\).
+		\item Triangle inequality implies that \(|a| \leq |a - f(x)| + |f(x)|\); thus \(|f(x)| \geq |a| - |a - f(x)|\).
+			Since \(\lim_{x\to p} f(x) = a\), there exist \(\delta > 0\) such that \( |f(x) - a| < \frac{|a|}{2} \)  whenever \(0 < d(x, p) < \delta\).
+			Therefore, \(|f(x)| > |a| - \frac{|a|}{2} = \frac{|a|}{2}\), and consequently, \[\frac{2}{|a|} > \left|\frac{1}{f(x)}\right|\] whenever \(0 < d(x, p) < 0\).
+
+			Let \(\epsilon > 0\). Since \(\lim_{x\to p} f(x) = a\), there exists \(\gamma > 0\) so that \[
+				|f(x) - a| < \frac{\epsilon |a|^2}{2}
+			\]
+			whenever \(0 < d(x, p) < \gamma\).
+			Then, for all \(x \in A\) satisfying \(0 < d(x, p) < \min\{\delta, \gamma\}\), it holds that
+			\begin{align*}
+				\left|\frac{1}{f(x)} - \frac{1}{a}\right| &= |a - f(x)|\cdot \left|\frac{1}{a}\right| \cdot \left|\frac{1}{f(x)}\right|\\
+				&< \frac{\epsilon |a|^2}{2} \cdot \frac{1}{|a|} \cdot \frac{2}{|a|} \\
+				&< \epsilon.
+			\end{align*}
+
+			Therefore, \(\lim_{x\to p} \frac{1}{f(x)} = \frac{1}{a}\).
+		\item Using \textbf{ii} and \textbf{iii}, we have 
+			\begin{align*}
+				\lim_{x\to p} \frac{f(x)}{g(x)} &= \lim_{x\to p} \left( f(x) \frac{1}{g(x)} \right) \\
+												  &= \left(\lim_{x\to p} f(x)\right) \left(\lim_{x\to p}\frac{1}{g(x)} \right) \\
+												  &= a\cdot \frac{1}{b} = \frac{a}{b}. 
+			\end{align*}
+	\end{enumerate}
+\end{dem}
+
+\begin{thm}{Sequence Interpretation of Function Limits}{sequenceinterpretationfunctionlimits}
+	Given a function \(f \colon A \subset X \to Y\),
+	\[
+		\lim_{x \to p} f(x) = L
+	\] if, and only if, for all sequences \((x_n)\) in \(A\) with \(\lim_{n\to \infty}x_n = p\) and \(x_n \neq c\) for all \(n\), we have \(\lim_{n\to\infty}f(x_n) = L\).
+\end{thm}
+
+\begin{dem}{}{}
+	Let's first prove the direct implication.  Suppose \( \lim_{x \to p} f(x) = L\).
+	Let \((x_n)\) be a sequence in \(A\) that such that \(x_n \to p\) as \(n \to \infty\) and \(x_n \neq p\) for all \(n\).
+	Since \(x_n \neq p\) for all \(n\), we have that \(d(x_n, p) > 0\) for all \(n\).
+	Let \(\epsilon > 0\). There exists \(\delta > 0\) such that \(d(f(x), L) < \epsilon\) whenever \(0 < d(x, p) < \delta\). Additionally, there also exists \(N\) such that \(0 < d(x_n, p) < \delta\) for all \(n \geq N\).
+	Therefore, we conclude \(d(f(x_n), L) < \epsilon\) for all \(n \geq N\).
+	This implies that \(\lim_{n\to\infty} f(x_n) = L\), as desired.
+
+	Let's now prove the reverse implication. Suppose  \(\lim_{x \to p} f(x) \neq L\). This implies that there exists \(\epsilon > 0\) such that, for all \(\delta > 0\), there exists \(x \in A\) satisfying \(0 < d(x, p) < \delta\) and \(d(f(x), L) > \epsilon\).
+	Define \(x_n \in A\) such that \(0 < d(x_n, p) < \frac{1}{n}\) and \(d(f(x_n), L) > \epsilon\), which exists by the previous sentence.
+	Note that, since \(0 < d(x_n, p) < \frac{1}{n}\), we conclude that \(\lim_{n\to\infty} x_n = p\). However, since \(d(f(x_n), L) > \epsilon\) for all \(n\), we conclude that \(\lim_{n\to\infty} f(x_n) \neq L\). This concludes the argument.
+\end{dem}
+
+\begin{thm}{Squeeze Theorem for Functions}{}
+	Suppose \(f, g, h \colon A \subset X \to \mathbb{R}\). Suppose \(\lim_{x \to p} g(x) = \lim_{x\to p} h(x) = L\) and \(g(x) \leq f(x) \leq h(x)\) for all \(x \in A\).
+	Then, \(\lim_{x\to p}f(x)\) exists, and is \(L\).
+\end{thm}
+
+\begin{dem}{}{}
+	Corolary of \nameref{thm:sequenceinterpretationfunctionlimits} and \nameref{thm:squeeze}.
+\end{dem}
+
+\begin{exmp}{}{}
+	Let \(D \colon \mathbb{R} \to \mathbb{R}\) be defined by \[
+		D(x) = 
+		\begin{cases}
+			1 & x \in \mathbb{Q} \\
+			0 & x \notin \mathbb{Q}.
+		\end{cases}
+	\]
+	Then, \(D\) does not have a limit at any point.
+\end{exmp}

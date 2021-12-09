@@ -81,32 +81,6 @@ Similarly as we've seen in previous chapters, we can say that \(\mathbb{R} \subs
 	If \(z = a + bi\) is a complex number, then we define \(|z| = (z\overline z)^{1/2} = (a^2 + b^2)^{1/2}\).
 \end{defn}
 
-\section{Euclidean Spaces}
-
-\begin{defn}{Euclidean Space}{euclideanspace}
-	Given an positive integer \(n\), let \(\mathbb{R}^n\) be the set of all \(n\)-uples \[
-		\mathbf x = (x_1, x_2, \dots, x_n)
-	\] of real numbers. If \(\mathbf x = (x_1, x_2, \dots, x_n)\) and \(\mathbf y = (y_1, y_2, \dots, y_n)\) are in \(\mathbb{R}^n\), and \(\alpha \in \mathbb{R}\), we define
-	\begin{align*}
-		\mathbf x + \mathbf y &= (x_1 + y_1, x_2 + y_2, \dots, x_n + y_n) \\
-		\alpha \mathbf x &= (\alpha x_1, \alpha x_2, \dots, \alpha x_n).
-	\end{align*}
-	These definitions make the set \(\mathbb{R}^n\) into a vector space over the real field.
-
-	We further define the \emph{inner product} by \[
-		\mathbf x \cdot \mathbf y = \sum_{i=1}^n x_iy_i
-	\]
-	and the \emph{norm} of \(\mathbf x\) by \[
-		|\mathbf x| = (\mathbf x \cdot \mathbf x)^{1/2}.
-	\]
-
-	This structure (\(\mathbb{R}^n\), equipped with the inner product and norm) is called the Euclidean \(n\)-dimensional space.
-\end{defn}
-
-\begin{prop}{\(\mathbb{R}^n\) is a metric space}{}
-	Define \(d \colon \mathbb{R}^n \times \mathbb{R}^n \to \mathbb{R}\) by \(d(\mathbf x, \mathbf y) = |\mathbf x - \mathbf y|\). \((\mathbb{R}^n, d)\) is a metric space.
-\end{prop}
-
 \section{Normed Vector Space}
 
 \begin{defn}{Normed Vector Space}{normedvectorspace}

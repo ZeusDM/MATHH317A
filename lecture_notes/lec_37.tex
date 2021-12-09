@@ -1,0 +1,63 @@
+\section{Riemann Integral}
+
+\lecture{37}{2021-12-08}{Riemann Integral}
+
+\begin{defn}{Upper and Lower Sums}{}
+	Given a bounded function \(f\colon [a, b] \to \mathbb{R}\) and a collection \(P = \{x_0, x_1, \dots, x_n\}\) --- we'll call \(P\) a partition -- with \(a = x_0 < x_1 < \dots < x_n = b\), let 
+	\begin{align*}
+		M_k &= \sup\{f(x) : x \in [x_{k-1}, x_k]\}, \\
+		m_k &= \inf\{f(x) : x \in [x_{k-1}, x_k]\},
+	\end{align*}
+	for \(k \in \{1, \dots, n\}\). Then, define
+	\begin{align*}
+		U(f, P) = \sum_{k = 1}^n M_k(x_k - x_{k-1}), \\
+		L(f, P) = \sum_{k = 1}^n m_k(x_k - x_{k-1}).
+	\end{align*}
+\end{defn}
+
+\begin{prop}{}{}
+	If \(f \colon [a, b] \to \mathbb{R}\)  is bounded and \(P\) is any partition of \([a, b]\), then \[
+		L(f, P) \leq U(f, P).
+	\]
+\end{prop}
+
+\begin{defn}{}{}
+	Given two partitions \(P, Q\) of \([a, b]\), we say that \(Q\) is a refinement of \(P\) if, and only if, \(P \subset Q\).
+\end{defn}
+
+\begin{prop}{}{}
+	If \(f \colon [a, b] \to \mathbb{R}\) is bounded, \(P\) is any partition of \([a, b]\), and \(Q\) is a refinement of \(P\), then \[
+		L(f, P) \leq L(f, Q) \leq U(f, Q) \leq U(f, P).
+	\]
+\end{prop}
+
+\begin{thm}{}{}
+	If \(f \colon [a, b] \to \mathbb{R}\) is bounded, and \(P_1, P_2\) are partitions of \([a, b]\), then \[
+		L(f, P_1) \leq U(f, P_2).
+	\]
+\end{thm}
+
+\begin{dem}{}{}
+	Let \(Q = P_1 \cup P_2\). Then, \[
+		L(f, P_1) \leq L(f, Q) \leq U(f, Q) \leq U(f, P_2).
+	\]
+\end{dem}
+
+\begin{defn}{}{}
+	If \(f\colon [a, b] \to \mathbb{R}\) is bounded, define
+	\begin{align*}
+		U(f) &= \inf\{U(f, P) : P \text{ is a partition of } [a, b]\}, \\
+		L(f) &= \sup\{U(f, P) : P \text{ is a partition of } [a, b]\}.
+	\end{align*}
+\end{defn}
+
+\begin{prop}{}{}
+	If \(f \colon [a, b]\) is bounded, then \(L(f) \leq U(f)\).
+\end{prop}
+
+\begin{defn}{Riemann integral}{riemannintegral}
+	If \(f \colon [a, b]\) is bounded, and \(L(f) = U(f)\), we define \[
+		\int_a^b f(x)\,dx = L(f) = U(f).
+	\]
+\end{defn}
+

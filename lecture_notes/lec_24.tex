@@ -1,0 +1,67 @@
+\lecture{24}{2021-11-01}{}
+
+\section{Connectedness}
+
+\begin{defn}{Separatedness}{separatedness}
+	If \(A, B\) are nonempty sets in \(X\), we say that \(A, B\) are \emph{separated} if \[
+		\overline A \cap B = \varnothing \quad \text{and} \quad A \cap \overline B = \varnothing.
+	\]
+\end{defn}
+
+\begin{defn}{Connectedness}{connectedness}
+	We say that a set \(E\) in \(X\) is \emph{disconnected} if there exist nonempty sets \(A, B\) that are separated, with \(E = A \cup B\).
+
+	We say that \(E\) is \emph{connected} if \(E\) is not disconnected.
+\end{defn}
+
+\begin{exmp}{}{}
+	The cantor set \(\mathcal C\) is disconnected in \(\mathbb{R}\) (consider \(A = \mathcal C \cap [0, 1/3]\), and \(B = \mathcal C \cap [2/3, 1]\)).
+
+	The set of rational numbers is disconnected in \(\mathbb{R}\) (consider \(A = \mathbb{Q} \cap (-\infty, \sqrt{2})\), and \(B = \mathbb{Q} \cap (\sqrt{2}, \infty)\)).
+\end{exmp}
+
+\begin{que}{}{}
+	What sets are connected in \(\mathbb{R}\)?
+\end{que}
+
+\begin{defn}{}{}
+	We say that \(E \subset \mathbb{R}\) is an interval if, given \(x < y\), with \(x, y \in E\), we have \(c \in E\) for all \(c\) satisfying \(x < c < y\).
+\end{defn}
+
+In other words, intervals are sets of the form \[
+	\varnothing, \{a\}, (a, b), [a, b), (a, b], [a, b], [a, \infty), (a, \infty), (-\infty, b), (-\infty, b), \mathbb{R}.
+\]
+(One may say that \(\varnothing\) and \(\{a\}\) are trivial intervals.)
+
+\begin{thm}{}{}
+	A set \(E \subset \mathbb{R}\) is connected if, and only if, it is an interval.
+\end{thm}
+
+\begin{dem}{}{}
+	Let's first prove the direct implication.
+	Suppose \(E\) is not an interval. Then, there exist \(a \in E, b \in E, c \notin E\) with \(a < c < b\). Let \(A = (-\infty, c) \cup E\), and \(B = (c, -\infty)\). Such sets are separated, thus \(E\) is disconnected.
+
+	Let's now prove the converse implication.
+	\textcolor{red}{To be done.}
+\end{dem}
+
+\begin{defn}{Path}{path}
+	Given a metric space \(X\), a \emph{continuous path} from \(p\) to \(q\) in \(W\) is a continuous\footnote{In a few weeks, we will know what this means.} function \(f\colon [0, 1] \to X\) with \(f(0) = p\) and \(f(1) = q\).
+\end{defn}
+
+\begin{defn}{Path-connectedness}{pathconnectedness}
+	We say that a set \(A\) is \(X\) is \emph{path-connected} if, given any \(v_1, v_2 \in A\), there is a continuous path lying in \(A\) starting \(v_1\) and ending at \(v_2\).
+\end{defn}
+
+\begin{thm}{}{}
+	If \(A\) is path-connected, then \(A\) is connected.
+\end{thm}
+
+\begin{exmp}{Topologist's Comb}{}
+	The converse of the theorem above is false. 
+
+	Let \(K = \{1/n : n \in \mathbb{Z}_{>0}\}\). Let 
+	\[ S = (\{0\} \times [0,1] ) \cup (K \times [0,1]) \cup ([0,1] \times \{0\}). \]
+
+	\(S\) is connected in \(\mathbb{R}^2\), but it is not path connected.
+\end{exmp}

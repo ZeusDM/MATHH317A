@@ -1,0 +1,27 @@
+\lecture{33}{2021-11-22}{}
+
+\begin{thm}{Algebraic Manipulation of Derivatives}{}
+	If \(f \colon A \subset \mathbb{R} \to \mathbb{R}\), \(g \colon A \subset \mathbb{R} \to \mathbb{R}\), and \(f'(c)\), \(g'(c)\) exist, then:
+	\begin{enumerate}
+		\item \((f+g)'(c) = f'(c) + g'(c)\);
+		\item \((kf)'(c) = kf'(c)\);
+		\item \((fg)'(c) = f'(c)g(c) + f(c)g'(c)\)
+		\item \((f/g)'(c) = \frac{f'(c)g(c) - f(c)g'(c)}{g(c)^2}\), if \(g(c) \neq 0\).
+	\end{enumerate}
+\end{thm}
+
+\begin{dem}{}{}
+	\begin{enumerate}
+		\item \textcolor{red}{To be done.}
+		\item \textcolor{red}{To be done.}
+		\item Note that
+			\begin{align*}
+				(fg)'(c) &= \lim_{x \to c} \frac{f(x)g(x) - f(c)g(c)}{x-c} \\
+						 &= \lim_{x \to c} \frac{f(x)g(x) - f(x)g(c) + f(x)g(c) - f(c)g(c)}{x-c} \\
+						 &= \lim_{x \to c} \frac{f(x)(g(x) - g(c)) + (f(x) - f(c))g(c)}{x-c} \\
+						 &= \lim_{x \to c} \frac{f(x)(g(x) - g(c))}{x - c} + \lim_{x \to c} \frac{(f(x) - f(c))g(c)}{x-c} \\
+						 &= f(c)g'(c) + f'(c)g(c).
+			\end{align*}
+		\item \textcolor{red}{To be done.}
+	\end{enumerate}
+\end{dem}

@@ -1,0 +1,27 @@
+\lecture{27}{2021-11-08}{Continuity}
+
+\section{Continuity}
+
+\begin{defn}{Continuity}{continuity}
+	Given a limit point \(p \in A \subset X\) and a function \(f\colon A \to Y\), we say that \emph{\(f\) is continuous at \(p\)} if \[
+		\lim_{x \to p} f(x) = f(p).
+	\]
+
+	Additionally, we say that \emph{\(f\) is continuous on \(B\)} if \(f\) is continuous at \(b\) for all \(b \in B\).
+\end{defn}
+
+\begin{thm}{Sequence Interpretation of Continuity}{}
+	Given \(f \colon A \subset X \to Y\) and \(p \in A\), \(f\) is continuous at \(c\) if, and only if, we have \(\lim_{n\to\infty} f(x_n) = f(c)\) for all sequences \((x_n)\) in A with \(\lim_{n \to \infty} x_n = p\).
+\end{thm}
+
+Note that the sequence is not required to satisfy \(x_n \neq c\). The theorem above follows from Definition \ref{defn:continuity} and Theorem \ref{thm:sequenceinterpretationfunctionlimits}.
+
+\begin{thm}{Composition of continuous functions}{}
+	Suppose \(f\colon A \subset X \to Y\) and  \(g\colon B \subset Y \to Z\) with the range of \(f\) contained in \(B\). Suppose \(f\) is continuous at \(c \in A\), \(g\) is continuous at \(f(c)\). Then, \(g \circ f\) is continuous at \(c\).
+\end{thm}
+
+\begin{dem}{}{}
+	Let \((x_n)\) be any sequence in \(A\) such that \(x_n \to c\) as \(n \to \infty\). Since \(f\) is continuous at \(c\), it follows that \(f(x_n) \to f(c)\) as \(n \to \infty\). Since \(g\) is continous at \(f(c)\), it follows that \(g(f(x_n)) \to g(f(c))\) as \(n \to \infty\).
+
+	Since this was done for arbitrary sequence \((x_n)\), it follows that \(g \circ f\) is continuous at \(c\).
+\end{dem}

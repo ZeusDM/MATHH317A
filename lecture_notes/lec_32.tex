@@ -1,0 +1,59 @@
+\lecture{32}{2021-11-19}{Derivative}
+
+\begin{cor}{Generalized Intermediate Value Theorem}{givt}
+	If \(f\colon A \subset \mathbb{R}^n \to \mathbb{R}\)  is continuous and \(A\) is connected; and \(f(a) \leq d \leq f(b)\) for some \(a, b \in A\) and \(d \in \mathbb{R}\); then there exists \(c \in A\) such that \(f(c) = d\).
+\end{cor}
+
+\begin{cor}{}{}
+	There exists a pair of antipodal points on Earth's surface with the same temperature.
+\end{cor}
+
+\section{Derivative}
+
+\begin{defn}{Derivative}{derivative}
+	Given \(f\colon A \subset \mathbb{R} \to \mathbb{R}\), the derivative of \(f\) at a interior point \(x \in A\) is \[
+		f'(x) = \lim_{\epsilon \to 0} \frac{g(x + \epsilon) - g(x)}{\epsilon},
+	\] if the limit exists. If the limit does not exist, we say \(f'(x)\) does not exist.
+\end{defn}
+
+\begin{defn}{Partial derivative}{partial}
+	Given \(f \colon A \subset \mathbb{R}^n \to \mathbb{R}\), the \(i\)-th partial derivative of \(f\) at a interior point \(\mathbf v = (v_1, \dots, v_n) \in A\) is \[
+		\frac{\partial f}{\partial x_i} \mathbf v = \lim_{\epsilon \to 0} \frac{f(v_1, \dots, v_i + \epsilon, \dots, v_n) - f(v_1, \dots, v_i, \dots, v_n)}{\epsilon},
+	\] if the limit exists.
+\end{defn}
+
+\begin{exmp}{}{}
+	Let \(f\colon \mathbb{R} - \{0\} \to \mathbb{R}\) be defined by \(f(x) = 1/x\). I claim that \(f'(x) = -1/x^2\), for any \(x \in \mathbb{R} - \{0\}\). Indeed,
+	\begin{align*}
+		f'(x) &= \lim_{\epsilon \to 0} \frac{f(x+\epsilon) - f(x)}{\epsilon} \\
+			  &= \lim_{\epsilon \to 0} \frac{\frac{1}{x + \epsilon} - \frac{1}{x}}{\epsilon} \\
+			  &= \lim_{\epsilon \to 0} \frac{x - (x + \epsilon)}{x(x + \epsilon)\epsilon} \\
+			  &= \lim_{\epsilon \to 0} \frac{-1}{x(x + \epsilon)} \\
+			  &= \frac{-1}{x^2}.
+	\end{align*}
+\end{exmp}
+
+\begin{exmp}{}{}
+	Let \(f\colon [0, +\infty) \to \mathbb{R}\) be defined by \(f(x) = \sqrt{x}\). I claim that \(f'(x) = \frac{1}{2\sqrt{x}}\), for any \(x \in (0, \infty)\). Indeed,
+	\begin{align*}
+		f'(x) &= \lim_{\epsilon \to 0} \frac{f(x+\epsilon) - f(x)}{\epsilon} \\
+			  &= \lim_{\epsilon \to 0} \frac{\sqrt{x+\epsilon} - \sqrt{x}}{\epsilon} \\
+			  &= \lim_{\epsilon \to 0} \frac{(\sqrt{x+\epsilon} - \sqrt{x})(\sqrt{x+\epsilon} + \sqrt{x})}{\epsilon(\sqrt{x+\epsilon} + \sqrt{x})} \\
+			  &= \lim_{\epsilon \to 0} \frac{1}{\sqrt{x+\epsilon} + \sqrt{x}} \\
+			  &= \frac{1}{2\sqrt{x}}.
+	\end{align*}
+\end{exmp}
+
+\begin{thm}{}{}
+	If \(f'(x)\) exists, then \(f\) is continuous at \(x\).
+\end{thm}
+
+\begin{dem}{}{}
+	Note that
+	\begin{align*}
+		\lim_{\epsilon \to 0} f(x + \epsilon) - f(x) &= \lim_{\epsilon \to 0} \epsilon\left(\frac{f(x + \epsilon) - f(x)}{\epsilon}\right) \\
+		&= \left(\lim_{\epsilon \to 0} \epsilon\right) \left(\lim_{\epsilon \to 0} \frac{f(x + \epsilon) - f(x)}{\epsilon}\right) \\
+		&= 0 \cdot f'(x) = 0.
+	\end{align*}
+	Thus, \(f(x) = \lim_{\epsilon \to 0} f(x + \epsilon)\), which implies \(f\) is continuous at \(x\).
+\end{dem}

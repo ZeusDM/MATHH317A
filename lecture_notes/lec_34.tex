@@ -1,0 +1,242 @@
+\lecture{34}{2021-11-29}{}
+
+\begin{thm}{Chain Rule}{chainrule}
+	Suppose \(f\colon A \subset \mathbb{R} \to \mathbb{R}\) and \(g\colon B \subset \mathbb{R} \to \mathbb{R}\), with \(f(A) \subset B\). Let \(c \in A\). If \(f'(c)\) and \(g'(f(c))\) exist, then \[
+		(g\circ f)'(c) = g'(f(c)) f'(c).
+	\]
+\end{thm}
+
+\begin{dem}{using sequences}{}
+	Let \(x_n\) be any sequence in \(A\) such that \(\lim_{n \to \infty} x_n = c\) and \(x_n \neq c\) for all \(n\).
+
+	Since \(f\) is differentiable at \(c\), we have that \[
+		f'(c) = \lim_{x \to c} \frac{f(x) - f(c)}{x - c}.
+	\]
+
+	By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
+		f'(c) = \lim_{n \to \infty} \frac{f(x_n) - f(c)}{x_n - c}.
+	\]
+
+	Since \(f\) is differentiable at \(c\), \(f\) is continuous at \(c\). Therefore, \(\lim_{n \to \infty} f(x_n) = f(c)\).
+
+	Let's divide into two scenarios:
+
+	\begin{enumerate}[label = \textbullet]
+		\item \underline{Suppose that there are finitely many \(n\) such that \(f(x_n) = f(c)\).} Disregard those finitely many values of \(n\); this won't change any limit behaviour. Therefore, we can suppose, without loss of generality, that \(f(x_n) \neq f(c)\) for all \(n\).
+
+			Since \(g\) is differentiable at \(f(c)\), we have that \[
+				g'(f(c)) = \lim_{y \to f(c)} \frac{g(y) - g(f(c))}{y - f(c)}.
+			\]
+
+			By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
+				g'(f(c)) = \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{f(x_n) - f(c)}.
+			\]
+			
+			Therefore, we conclude that 
+			\begin{align*}
+				g'(f(c)) f'(c) &= \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{f(x_n) - f(c)} \frac{f(x_n) - f(c)}{x_n - c} \\
+							   &= \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{x_n - c}.
+			\end{align*}
+
+		\item \underline{Suppose that there are infinitely many \(n\) such that \(f(x_n) = f(c)\).} Let \(n_k\) be the sequence of such values of \(n\). Then, since \((x_{n_k})\) is a subsequence of \((x_n)\), we conclude that \[
+				f'(c) = \lim_{k \to \infty} \frac{f(x_{n_k}) - f(c)}{x_n - c} = 0.
+		\]
+		\textcolor{red}{To be finished.}
+	\end{enumerate}
+
+	In either case, we conclude that \[
+		g'(f(c)) f'(c) = \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{x_n - c}.
+	\]
+
+	Since this was done for an arbitrary sequence \(x_n\), by the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude
+	\begin{align*}
+		g'(f(c)) f'(c) &= \lim_{x \to c} \frac{g(f(x)) - g(f(c))}{x - c} \\
+					   &= (g \circ f)'(c).
+	\end{align*}
+\end{dem}
+
+\begin{dem}{not using sequences}{}	
+	Let \[
+		u(x) =
+		\begin{cases}
+			\frac{f(x) - f(c)}{x - c} & x \neq c \\
+			f'(c) & x = c
+		\end{cases}
+	\]
+	and let \[
+		v(y) =
+		\begin{cases}
+			\frac{g(y) - g(f(c))}{y - f(c)} & y \neq f(c) \\
+			g'(f(c)) & y = f(c).
+		\end{cases}
+	\]
+
+	Note that \(u\) is continuous at \(c\) and \(v\) is continuous at \(f(c)\), and
+	\begin{align*}
+		f(x) - f(c)		&= u(x)(x-c); \\
+		g(y) - g(f(c))	&= v(y)(y-f(c)).
+	\end{align*}
+
+	Therefore,
+	\begin{align*}
+		g(f(x)) - g(f(c)) &= v(f(x))(f(x) - f(c)) \\
+						  &= v(f(x))u(x)(x - c);
+	\end{align*}
+	thus
+	\begin{align*}
+		(g \circ f)'(c) &= \lim_{x \to c} \frac{g(f(x)) - g(f(c))}{x - c} \\
+						&= \lim_{x \to c} v(f(x))u(x) \\
+						&= g'(f(c))f'(c),
+	\end{align*}
+	as desired.
+\end{dem}
+
+\begin{thm}{Interior Maximum Theorem}{interiormaximum}
+	If \(f'\) exists at all points in \((a, b)\) and \(f\) attains a maximum on \((a, b)\) at a point \(c \in (a, b)\), then \(f'(c) = 0\).
+\end{thm}
+
+\begin{dem}{}{}
+	Recall that  \[
+		f'(c) = \lim_{h \to 0} \frac{f(c + h) - f(c)}{h}.
+	\]
+	By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
+		f'(c) = \lim_{n \to \infty} \frac{f(c + 1/n) - f(c)}{1/n}
+	\]
+	Since \(f(c + 1/n) \leq f(c)\) we conclude that \(f'(c) \leq 0\).
+
+	Similarly, we also have \[
+		f'(c) = \lim_{n \to \infty} \frac{f(c - 1/n) - f(c)}{-1/n}
+	\]
+	Since \(f(c + 1/n) \leq f(c)\) we conclude that \(f'(c) \geq 0\).
+
+	Thus, \(f'(c) = 0\), as desired.
+\end{dem}
+
+\begin{cor}{Interior Minimum Theorem}{interiorminimum}
+	If \(f'\) exists at all points in \((a, b)\) and \(f\) attains a minimum on \((a, b)\) at a point \(c \in (a, b)\), then \(f'(c) = 0\).
+\end{cor}
+
+\begin{thm}{Darboux's Theorem}{darboux}
+	Suppose that \(f\colon [a, b] \to \mathbb{R}\) is such that the derivative \(f'(x)\) exists at every \(x \in [a, b]\), and suppose that \(d\) is between \(f'(a)\) and \(f'(b)\). Then, there exists \(c \in (a, b)\) such that \(f'(c) = d\).
+\end{thm}
+
+Note that this theorem states that the conclusion of the Intermediate Value Theorem holds for \(f'\), even if \(f'\) is not continuous.
+
+\begin{dem}{}{}
+	Without loss of generality, suppose \(f'(b) < d < f'(a)\).
+	Let \(g(x) = f(x) - dx\). Note that \(g'(a) = f'(a) - d > 0\), and  \(g'(b) = f'(b) - d < 0\).
+
+	Let \(x_n\) be any sequence converging to \(a\), with \(x_n > a\) for all \(n\). Note that \[
+		0 < g'(a) = \lim_{n \to \infty} \frac{g(x_n) - g(a)}{x_n - a};
+	\]
+	thus, there exists \(n\) such that \(\frac{g(x_n) - g(a)}{x_n - a} > 0\), and consequently, since \(x_n > a\), we have that \(g(n) > g(a)\), so the maximum of \(g\) is not attained on \(a\).
+
+	Let \(y_n\) be any sequence converging to \(b\), with \(y_n < b\) for all \(n\). Note that \[
+		0 > g'(b) = \lim_{n \to \infty} \frac{g(y_n) - g(b)}{y_n - b};
+	\]
+	thus, there exists \(n\) such that \(\frac{g(y_n) - g(b)}{y_n - b} < 0\), and consequently, since \(y_n < b\), we have that \(g(n) > g(b)\), so the maximum of \(g\) is not attained on \(b\).
+
+	Therefore, the maximum of \(g\) is attained at some \(c \in (a, b)\). By the \nameref{thm:interiormaximum}, we conclude \(g'(c) = 0\); thus \(f'(c) = d\), as desired.
+\end{dem}
+
+\begin{exmp}{}{}
+	Let \(g\colon \mathbb{R} \to \mathbb{R}\) be defined by \[
+		g(x) = 
+		\begin{cases}
+			x^2\sin(1/x) & x \neq 0 \\
+			0 & x = 0.
+		\end{cases}
+	\]
+	Such function is continuous and differentiable, and its derivative is \[
+		g'(x) = 
+		\begin{cases}
+			2x \sin(1/x) - \cos(1/x) & x \neq 0 \\
+			0 & x = 0.
+		\end{cases}
+	\]
+	Although \(g'\) is not continuous at \(0\), \nameref{thm:darboux} implies that, for all \(a, b \in \mathbb{R}\) and \(d\) between \(g'(a)\) and \(g'(b)\), there exists \(c \in (a, b)\) such that \(g'(c) = d\).
+\end{exmp}
+
+\begin{thm}{Mean Value Theorem}{meanvalue}
+	Suppose \(f\colon [a, b] \to \mathbb{R}\) is continuous on \([a, b]\) and differentiable on \((a, b)\). Then, there exists \(c \in (a, b)\) such that \[
+		f'(c) = \frac{f(a) - f(b)}{a - b}.
+	\]
+\end{thm}
+
+\begin{lem}{Rolle's Theorem}{rolle}
+	Suppose \(f\colon [a, b] \to \mathbb{R}\) is continuous on \([a, b]\), differentiable on \((a, b)\), and \(f(a) = f(b)\). Then, there exists \(c \in (a, b)\) such that \(f'(c) = 0\).
+\end{lem}
+
+\begin{dem}{}{}
+	Let's divide into three scenarios:
+	\begin{enumerate}[label = \textbullet]
+		\item If there exists \(x\) such that \(f(x) > f(a) = f(b)\). This implies that the maximum of \(f\) is not attained at \(a\) nor at \(b\); thus, the maximum of \(f\) is attained at some \(c \in (a, b)\). By the \nameref{thm:interiormaximum}, we conclude \(f'(c) = 0\).
+
+		\item If there exists \(x\) such that \(f(x) < f(a) = f(b)\). This implies that the minimum of \(f\) is not attained at \(a\) nor at \(b\); thus, the minimum of \(f\) is attained at some \(c \in (a, b)\). By the \nameref{cor:interiorminimum}, we conclude \(f'(c) = 0\).
+
+		\item If neither scenario above occur, we have that \(f(x) = f(a) = f(b)\) for all \(x \in (a, b)\). Therefore, for any \(c \in (a, b)\), we have \(f'(c) = 0\).
+	\end{enumerate}
+
+	In either case, there exists \(c \in (a, b)\) such that \(f'(c) = 0\), as desired.
+\end{dem}
+
+\begin{dem}{of \nameref{thm:meanvalue}}{}
+	Define \[g(x) = f(x) - (x-a)\left(\frac{f(a) - f(b)}{a - b}\right).\] Note that
+	\begin{align*}
+		g(b) &= f(b) - (b - a)\left(\frac{f(a) - f(b)}{a - b}\right) = f(a) \\
+			 &= f(a) - (a - a)\left(\frac{f(a) - f(b)}{a - b}\right) \\
+			 &= g(a).
+	\end{align*}
+
+	Thus, we can apply \nameref{lem:rolle} to conclude that there exists \(c \in (a, b)\) such that \(g'(c) = 0\); therefore, \[
+		f'(c) = \frac{f(a) - f(b)}{a - b}.
+	\]
+\end{dem}
+
+\begin{thm}{Generalized Mean Value Theorem}{generalizedmeanvalue}
+	Suppose \(f, g \colon [a, b] \to \mathbb{R}\) are continuous on \([a, b]\) and differentiable on \((a, b)\). Then, there exists \(c \in (a, b)\) such that \[
+		f'(c)(g(b) - g(a)) = g'(c)(f(b) - f(a))
+	\]
+\end{thm}
+
+\begin{dem}{sketch only}{}
+	Apply \nameref{lem:rolle} on \[h(t) = f(t)(g(b) - g(a)) - g(t)(f(b) - f(a)).\]
+\end{dem}
+
+\begin{thm}{L'Hôpital's Rule}{lhopital}
+	Suppose that
+	\begin{enumerate}[label = \textbullet]
+		\item \(f, g\) are continuous on \([c - \epsilon, c + \epsilon]\),
+		\item \(f, g\) are differentiable on \((c - \epsilon, c + \epsilon)\),
+		\item \(f(c) = g(c) = 0\), and
+		\item \(g(x) \neq 0\) and \(g'(x) \neq 0\) on \((c - \epsilon, c + \epsilon) - \{c\}\).
+	\end{enumerate}
+	Then, \[
+		\lim_{x\to c} \frac{f(x)}{g(x)} = \lim_{x \to c} \frac{f'(x)}{g'(x)},
+	\]
+	if the limit on the right side exists.
+\end{thm}
+
+\begin{dem}{}{}
+	Let \(L = \lim_{x \to c} \frac{f'(x)}{g'(x)}\).
+
+	Consider an arbitrary sequence \((x_n)\) with \(\lim_{n \to \infty} x_n = c\) and \(x_n \neq c\) for all \(n\).
+
+	By \nameref{thm:generalizedmeanvalue}, there exists \(d_n\) between \(x_n\) and \(c\) with \[
+		f'(d_n)(g(x_n) -  g(c)) = g'(d_n)(f(x_n) - f(c));
+	\]
+	in other words, \[
+		\frac{f'(d_n)}{g'(d_n)} = \frac{f(x_n)}{g(x_n)}.
+	\]
+
+	Note that, since \(d_n\) is between \(x_n\) and \(c\), and \(x_n \to c\), we conclude \(d_n \to c\). Thus, 
+	\begin{align*}
+		\lim_{x \to c} \frac{f'(x)}{g'(x)} &= \lim_{n \to \infty} \frac{f'(d_n)}{g'(d_n)} \\
+			&= \lim_{n \to \infty} \frac{f(x_n)}{g(x_n)}.
+	\end{align*}
+
+	Since this was done for any sequence \(x_n\), we conclude that \[
+		\lim_{x \to c} \frac{f(x)}{g(x)} = \frac{f'(x)}{g'(x)}.
+	\]
+\end{dem}
+
