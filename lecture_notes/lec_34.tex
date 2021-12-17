@@ -6,56 +6,56 @@
 	\]
 \end{thm}
 
-\begin{dem}{using sequences}{}
-	Let \(x_n\) be any sequence in \(A\) such that \(\lim_{n \to \infty} x_n = c\) and \(x_n \neq c\) for all \(n\).
+%\begin{dem}{using sequences}{}
+%	Let \(x_n\) be any sequence in \(A\) such that \(\lim_{n \to \infty} x_n = c\) and \(x_n \neq c\) for all \(n\).
+%
+%	Since \(f\) is differentiable at \(c\), we have that \[
+%		f'(c) = \lim_{x \to c} \frac{f(x) - f(c)}{x - c}.
+%	\]
+%
+%	By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
+%		f'(c) = \lim_{n \to \infty} \frac{f(x_n) - f(c)}{x_n - c}.
+%	\]
+%
+%	Since \(f\) is differentiable at \(c\), \(f\) is continuous at \(c\). Therefore, \(\lim_{n \to \infty} f(x_n) = f(c)\).
+%
+%	Let's divide into two scenarios:
+%
+%	\begin{enumerate}[label = \textbullet]
+%		\item \underline{Suppose that there are finitely many \(n\) such that \(f(x_n) = f(c)\).} Disregard those finitely many values of \(n\); this won't change any limit behaviour. Therefore, we can suppose, without loss of generality, that \(f(x_n) \neq f(c)\) for all \(n\).
+%
+%			Since \(g\) is differentiable at \(f(c)\), we have that \[
+%				g'(f(c)) = \lim_{y \to f(c)} \frac{g(y) - g(f(c))}{y - f(c)}.
+%			\]
+%
+%			By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
+%				g'(f(c)) = \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{f(x_n) - f(c)}.
+%			\]
+%			
+%			Therefore, we conclude that 
+%			\begin{align*}
+%				g'(f(c)) f'(c) &= \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{f(x_n) - f(c)} \frac{f(x_n) - f(c)}{x_n - c} \\
+%							   &= \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{x_n - c}.
+%			\end{align*}
+%
+%		\item \underline{Suppose that there are infinitely many \(n\) such that \(f(x_n) = f(c)\).} Let \(n_k\) be the sequence of such values of \(n\). Then, since \((x_{n_k})\) is a subsequence of \((x_n)\), we conclude that \[
+%				f'(c) = \lim_{k \to \infty} \frac{f(x_{n_k}) - f(c)}{x_n - c} = 0.
+%		\]
+%		\textcolor{red}{To be finished.}
+%	\end{enumerate}
+%
+%	In either case, we conclude that \[
+%		g'(f(c)) f'(c) = \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{x_n - c}.
+%	\]
+%
+%	Since this was done for an arbitrary sequence \(x_n\), by the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude
+%	\begin{align*}
+%		g'(f(c)) f'(c) &= \lim_{x \to c} \frac{g(f(x)) - g(f(c))}{x - c} \\
+%					   &= (g \circ f)'(c).
+%	\end{align*}
+%\end{dem}
 
-	Since \(f\) is differentiable at \(c\), we have that \[
-		f'(c) = \lim_{x \to c} \frac{f(x) - f(c)}{x - c}.
-	\]
-
-	By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
-		f'(c) = \lim_{n \to \infty} \frac{f(x_n) - f(c)}{x_n - c}.
-	\]
-
-	Since \(f\) is differentiable at \(c\), \(f\) is continuous at \(c\). Therefore, \(\lim_{n \to \infty} f(x_n) = f(c)\).
-
-	Let's divide into two scenarios:
-
-	\begin{enumerate}[label = \textbullet]
-		\item \underline{Suppose that there are finitely many \(n\) such that \(f(x_n) = f(c)\).} Disregard those finitely many values of \(n\); this won't change any limit behaviour. Therefore, we can suppose, without loss of generality, that \(f(x_n) \neq f(c)\) for all \(n\).
-
-			Since \(g\) is differentiable at \(f(c)\), we have that \[
-				g'(f(c)) = \lim_{y \to f(c)} \frac{g(y) - g(f(c))}{y - f(c)}.
-			\]
-
-			By the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude that \[
-				g'(f(c)) = \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{f(x_n) - f(c)}.
-			\]
-			
-			Therefore, we conclude that 
-			\begin{align*}
-				g'(f(c)) f'(c) &= \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{f(x_n) - f(c)} \frac{f(x_n) - f(c)}{x_n - c} \\
-							   &= \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{x_n - c}.
-			\end{align*}
-
-		\item \underline{Suppose that there are infinitely many \(n\) such that \(f(x_n) = f(c)\).} Let \(n_k\) be the sequence of such values of \(n\). Then, since \((x_{n_k})\) is a subsequence of \((x_n)\), we conclude that \[
-				f'(c) = \lim_{k \to \infty} \frac{f(x_{n_k}) - f(c)}{x_n - c} = 0.
-		\]
-		\textcolor{red}{To be finished.}
-	\end{enumerate}
-
-	In either case, we conclude that \[
-		g'(f(c)) f'(c) = \lim_{n \to \infty} \frac{g(f(x_n)) - g(f(c))}{x_n - c}.
-	\]
-
-	Since this was done for an arbitrary sequence \(x_n\), by the \nameref{thm:sequenceinterpretationfunctionlimits}, we conclude
-	\begin{align*}
-		g'(f(c)) f'(c) &= \lim_{x \to c} \frac{g(f(x)) - g(f(c))}{x - c} \\
-					   &= (g \circ f)'(c).
-	\end{align*}
-\end{dem}
-
-\begin{dem}{not using sequences}{}	
+\begin{dem}{}{}	
 	Let \[
 		u(x) =
 		\begin{cases}
